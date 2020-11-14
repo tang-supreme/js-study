@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //  判断数据类型
+
+    //typeof 关键字来进行判断（两个使用方式）
+    // 1.typeof 你要检测的变量
+    // 2.typeof (你要检测的变量)
+    // typeof 关键字的返回值就是检测的数据类型，返回值是一个字符串
+    //只能准确检测基本数据类型
+
+    var n1 = 100 
+    console.log(typeof n1)
+    console.log(typeof (n1))
+
+    //res这个变量接受的内容就是检测n1变量的结果
+    var res = typeof n1
+    console.log(typeof res)
+
+ 
+    var n2 = NaN
+    console.log(typeof n2)
+
+    var s3='100'
+    console.log(typeof s3)
+
+    var b1 = true
+    var b2 = false
+    console.log(typeof b1)
+    console.log(typeof b2)
+
+    var u
+    var n = null
+    console.log(typeof u)
+    console.log(typeof n)
+   </script> 
+</body>
+</html>

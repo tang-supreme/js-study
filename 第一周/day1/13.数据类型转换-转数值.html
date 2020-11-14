@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.转换成数值数据类型
+
+        // 方法1：Number(你要转换的内容)
+        //  返回值的形式接受结果，返回值就是转化后的内容 
+        //  在转换的过程中，会把你要转换的内容当作一个整体来看待
+        //  能转成功就是以一个数值，不能成功就是NaN
+
+        var s1 = '100'
+        var s2 = '100a'
+        var u
+        var b1 = true
+        var b2 = false
+
+        var res1 = Number(s1)
+        var res2 = Number(s2)
+        var res3 = Number(u)
+        var res4 = Number(b1)
+        var res5 = Number(b2)
+
+        console.log(res1)
+        console.log(res2)
+        console.log(res3)
+        console.log(res4)
+        console.log(res5)
+
+
+        // 方法2：parseInt(你要转换的数据)
+        // 结果以返回值的形式得到
+        // 转换的过程中，会把整个东西当作一个完整的文本来看待
+        //   从左往右一位一位的看
+        //   能转换的就给你转换了，遇到转换不了的就直接停止，把之前的结果转换给你
+        //   如果第一位就不能转换，那么直接返回NaN
+        //   不认识小数点，只能解析整数
+
+        var n1 = '100'
+        var n2 = '100a'
+        var n3 = '100.2222'
+        var n4 = 'a100'
+        var n5 = true
+
+        console.log(parseInt(n1))
+        console.log(parseInt(n2))
+        console.log(parseInt(n3))
+        console.log(parseInt(n4))
+        console.log(parseInt(n5))
+
+        // 方法3：parseFloat(你要转换的数据)
+        // 解析方式和parseInt一样，只是parseFloat认识小数
+
+        var n6 = '200'
+        var n7 = '200.342342'
+
+        console.log(parseFloat(n6))
+        console.log(parseFloat(n7))
+        console.log(parseFloat(true))
+
+        // 方法4：进行一个非+的数学运算
+        // - * / %
+        // 因为js里面的+不光有数学运算的功能，还有链接字符串
+        // 在js里面只有 +两边都是数字的时候，或者是布尔的时候，可以进行数学运算
+        //只要 +任意一边是一个字符串的时候，那么就会进行字符串拼接
+        var n1 = '100'
+        console.log(n1 - 0)
+        console.log(n1 * 1)
+        console.log(n1 / 1)
+        console.log(n1 % 101)
+        //唯独+不能转换成数字
+        console.log(n1 + 0)
+
+        console.log('0'+100)
+    </script>
+</body>
+</html>

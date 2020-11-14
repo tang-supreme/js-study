@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.其他数据类型转换为字符串
+
+        // 方法1：String(你要转换的数据类型)
+        var n1 = 100
+        var n2 = true
+        var n3
+        var res1 = String(n1)
+        var res2 = String(n2)
+        var res3 = String(n3)
+        console.log(res1)
+        console.log(res2)
+        console.log(res3)
+
+        // 方法2：你要转换的数据类型.toString()
+        // toString这个方法在使用的时候有一个特殊的作用
+        // 可以把一个数字转换进制输出
+        // 你要转换的数据.toString(你要转换的进制数)
+        // 进制数可以填写多少 2-36都可以
+        var n4 = 100
+        var n5 = true
+        var res4 = n4.toString()
+        var res5 = n5.toString()
+        console.log(res4)
+        console.log(res5)
+
+        var n6 = 100
+        var res6 = n6.toString(16) //转换为16进制
+        console.log(res6)
+
+        // 方法3：进行+的运算
+        //  只要 + 有一边是字符串，就会进行字符串拼接
+        //  结果就是一个字符串
+        var n7 = 100
+        var res7 = n7 + '111'
+        console.log(res7)
+        console.log('1' + 2 + 3 + 4)
+    </script>
+</body>
+
+</html>
