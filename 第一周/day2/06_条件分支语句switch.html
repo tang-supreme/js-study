@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // switch 也是条件分支的一种
+
+        // 一个条件来的时候我看你满足哪个条件
+        // 你满足哪一个，我就给你走哪一个
+
+        /*
+            switch(条件){
+                case 情况一：
+                    情况一满足的时候执行的代码
+                    break
+                case 情况二：
+                    情况二满足的时候执行的代码
+                    break
+                default：
+                    以上情况都不满足的时候执行
+            }        
+
+            switch 里面的每一个case都必须 ===的一个状态才能执行
+                条件判断的时候不能选取一个范围，只能等于的状态
+
+            break阻断程序继续执行
+                break 不写的时候，会继续向下穿透另一个条件，执行另一个条件的代码
+                直到遇到一个break为止
+        */
+        var score = 59
+        switch (score) {
+            case 90:
+            case 91:
+            case 92:
+            case 93:
+            case 94:
+            case 95:
+            case 96:
+            case 97:
+            case 98:
+            case 99:
+            case 100:
+                console.log('A')
+                break
+            case 80:
+            case 81:
+            case 82:
+            case 83:
+            case 84:
+            case 85:
+            case 86:
+            case 87:
+            case 88:
+            case 89:
+                console.log('B')
+                break
+            case 70:
+            case 71:
+            case 72:
+            case 73:
+            case 74:
+            case 75:
+            case 76:
+            case 77:
+            case 78:
+            case 79:
+                console.log('C')
+                break
+            case 60:
+            case 61:
+            case 62:
+            case 63:
+            case 64:
+            case 65:
+            case 66:
+            case 67:
+            case 68:
+            case 69:
+                console.log('D')
+                break
+            default:
+                console.log('E')
+        }
+    </script>
+</body>
+
+</html>
