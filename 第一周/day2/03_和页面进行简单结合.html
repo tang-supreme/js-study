@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <input id="first" type="text"> +
+  <input id="second" type="text">
+  <button id="btn">=</button>
+  <input id="result" type="text">
+  <script>
+    /*
+      解决几个技术问题
+      1.获取文本框
+        在js里面元素的id可以直接代表这个元素
+      2.什么时候获取
+        当你点击这个button按钮的时候获取 
+      3. 你怎么知道他什么时候点击
+          给这个 button 按钮注册一个点击的事件
+          语法： 元素.onclick = function () { // 这个大括号会在触发事件的时候执行 }
+      4. 获取文本框的值
+          元素.value
+          只要是从页面中拿出来的数据都是字符串
+      5. 把结果丢回文本框
+          元素.value = xxx 
+    */
+    console.log(first)
+    console.log(second)
+    console.log(btn)
+    btn.onclick = function(){
+        console.log("我被点击了")
+        var firstNum = first.value - 0
+        var secondNum = second.value - 0
+        console.log(firstNum)
+        console.log(secondNum)
+        var sum = firstNum + secondNum
+        result.value = sum
+    }
+  </script>
+</body>
+</html>
