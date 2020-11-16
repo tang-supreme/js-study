@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
   <script>
-    // ...
+    // 我们的js代码都是从上到下执行
+    // 分支语句就是当你执行到这里的时候，选择执行或者不执行这段代码
+
+    /*
+    if(){}
+    if(){}else{}
+
+    
+    
+    */
+    // var age = 20
+    // if(age>18){
+    //   console.log("成年人")
+    // }else{
+    //   console.log("未成年人")
+    // }
+
+    var age = prompt("请输入年龄")
+    if (age > 22) {
+      console.log("可以结婚了")
+    } else if (age>=18) {
+      console.log("可以去网吧了")
+    } else if (age>=12) {
+      console.log("可以谈恋爱了")
+    } else if (age>=6) {
+      console.log("可以上学了")
+    } else {
+      console.log("在家呆着")
+    }
   </script>
 </body>
+
 </html>

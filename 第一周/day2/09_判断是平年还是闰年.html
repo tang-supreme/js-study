@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            1.能被4整除 不能被 100 整除 ==》闰年
+            2.能被400整除 ==》闰年
+        */
+        var year = prompt('请输入年份')
+        if(year % 4 ===0 && year % 100 !== 0 || year % 400 ===0){
+            console.log('这是闰年')
+        }else{
+            console.log('这是平年')
+        }
+    </script>
+</body>
+</html>
