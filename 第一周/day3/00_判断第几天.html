@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var year = 2000
+        var month = 3
+        var day = 1
+        var date = 0
+        /*
+            先不管年的事情
+
+            月份如果是6 应该加的是1，2，3，4，5月的天数
+            我需要的是从1到我前一个月的所有天数相加
+            写一个循环，循环我的月份        
+        */
+
+        // 判断是不是闰年
+        if(month>=3){
+            if(year % 4 ===0 && year % 100 !==0 || year % 400 ===0){
+                date = date + 1
+            }
+        }
+
+        while (month > 1) {
+            // 我需要的是比自己小一个月的月份
+            switch (month - 1) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    date = date + 31;
+                    break
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    date = date + 30;
+                    break
+                case 2:
+                    date = date + 28
+                    break
+            }
+            month--
+        }
+        date = date + day
+        console.log(date)
+    </script>
+</body>
+
+</html>
