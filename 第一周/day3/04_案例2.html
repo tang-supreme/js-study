@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <script>
-        //1000-2000之间所有的闰年
-        for (var i = 1000; i <=2020 ; i++){
-            if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
-                document.write(i+'是闰年<br>')
-            }
-        }
-    </script>
+  <script>
+    //1000-2000之间所有的闰年
+    for (var i = 1000; i <= 2020; i++) {
+      // i 就是每一个数字
+      if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+        document.write(i + '是闰年<br>')
+      }
+    }
+  </script>
 </body>
+
 </html>
