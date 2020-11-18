@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //打印出1000 - 2000中所有的闰年
+    var count = 1
+    // var count = 0
+    for (var i = 1000; i <= 2000; i++) {
+      if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+        document.write(i + '______')
+        // count++  //如果count初始值为0时，count++写在if条件的前面
+        if (count % 4 === 0) {
+          document.write('<br>')
+        }
+        count++   //如果count初始值为1时，count++写在if条件的后面
+      }
+    }
+    console.log(count)
+  </script>
+</body>
+
+</html>

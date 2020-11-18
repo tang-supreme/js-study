@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 判断一个数是不是水仙花数
+    // var num = 153
+
+    // var a = parseInt(num / 100)
+    // var b = parseInt(num % 100 / 10)
+    // var c = num % 10
+
+    // if(a*a*a+b*b*b+c*c*c===num){
+    //   console.log(num+'是水仙花数')
+    // }
+
+    // 找到所有水仙花
+    for (n = 100; n < 1000; n++) {
+      var num = n
+
+      var a = parseInt(num / 100)
+      var b = parseInt(num % 100 / 10)
+      var c = num % 10
+
+      if (a * a * a + b * b * b + c * c * c === num) {
+        console.log(num + '是水仙花数')
+      }
+    }
+  </script>
+</body>
+
+</html>
