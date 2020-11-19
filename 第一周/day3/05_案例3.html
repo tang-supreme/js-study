@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    
+  <script>
+    // 判断一个数字是不是质数
+    // 除了 1 和自己本身，别的都不能整除
+
+    // var num = prompt("请输入一个数字")
+
+    /*
+      20 / 1 不管
+      20 / 20 不管    
+    */
+
+    // // 假设：先认定你是一个质数
+    // var flag = true
+    // for (var i = 2; i < num; i++) {
+    //   // 如果你不能整除，那么我什么都不能做
+    //   // 如果你能整除，让flag = false
+    //   console.log(i)
+    //   if (num % i === 0) {
+    //     // 表示被某一个数字整除了
+    //     flag = false
+    //     break //满足条件及跳出循环
+    //   }
+    // }
+    // // 如果到这里，flag是true，证明每一个数字都不能被整除，因为一旦可任意被整除，flag就赋值为false
+    // // 如果到达这里，flag 是false，证明至少有一个数字可以整除
+    // flag ? console.log(num + '是质数') : console.log(num + '不是质数')
+
+    // 打印1-200的所有质数
+
+    for (var i = 2; i <= 200; i++) {
+      var flag = true
+      for (var j = 2; j < i; j++) {
+        if (i % j === 0) {
+          flag = false
+          break
+        }
+      }
+      if(flag){
+        console.log(i)
+      }
+    }
+  </script>
 </body>
+
 </html>

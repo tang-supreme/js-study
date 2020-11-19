@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    
+  <script>
+    //九九乘法表
+    for (var i = 1; i <= 9; i++){  // 表示行
+
+      // 第一行就是一个
+      // 第二行就是两个
+      for(var j=1;j<=i;j++){
+        // i===1 的时候 j===1
+        // i===2 的时候 j===1 2
+        // i===3 的时候 j===1 2 3
+      document.write(i+'*'+j+'='+i*j+'&nbsp&nbsp&nbsp&nbsp')
+      }
+      document.write('<br><br>')
+    }
+  </script>
 </body>
+
 </html>
