@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数定义阶段做的事情
+
+    /*熟读并背诵全文
+      函数定义阶段做的三件事
+      1.开辟一个内存空间
+      2.把你写的代码一模一样的放在这个空间中（不解析变量）
+      3.把空间地址给到变量名（函数名）
+     */
+    
+     var num = 100
+    //  这里是在定义一个函数
+    function fn(){
+      // 我存储起来的内容是console.log(num)
+      // 而不是 console.log(100)
+      console.log(num)
+    }
+    num = 200
+
+    // 如果函数定义阶段存储代码的时候就解析变量了，这里执行的时候就应该打印 100
+    // 如果函数定义阶段存储代码的时候没解析变量，这里执行的时候就应该打印 200
+    fn() //200
+  </script>
+</body>
+</html>
