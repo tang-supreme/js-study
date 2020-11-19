@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 求n个数字的和
+    function fn(){
+      var sum = 0
+      console.log(typeof arguments.length)
+      for(var i= 0;i<arguments.length;i++){
+        console.log(arguments[i])
+        sum+=arguments[i]
+      }
+      console.log(sum)
+    }
+    fn(10,20,30,40)
+    fn(9,8,7,6,5,4)
+
+    // 在每个函数体内有一个天生的变量叫做arguments
+    // 是所有传递的实参的集合
+    // arguments是一个长得很像数组的数据集合，但是不是数组
+    // 伪数组
+    // 也可以用索引来排列，并且可以按照索引来获取
+    // arguments里面有一个属性叫做length，表示这个arguments伪数组的长度
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 复杂数据类型和基本数据类型的存储不一样
+
+    // 复杂数据类型（引用数据类型/地址数据类型）
+    // 基本数据类型的存储，就是直接在变量上存储值
+    //  比如写a = 100 ，那么a变量里面存储的值就是100
+    // 引用数据类型，变量存储的不是直接的值，而是一个地址
+
+    // 拿函数为例子
+    //    我们在定义盒子的时候，这个盒子在内存中是一个随机的地方
+    //    然后这个随机的地方有一个地址出现 xxff00
+    //    我们的变量名里面存储的内容就是这个xxff00这个地址
+    // 我们函数名存储的是一个地址
+
+    function fn(){
+      console.log(123)
+    }
+  </script>
+</body>
+</html>
