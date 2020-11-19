@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 调用函数
+    /*
+      两种声明方式在调用上有一点点区别
+      1.声明函数可以先调用也可以后调用
+      2.赋值函数只能在声明后调用
+    */
+    fn()
+    function fn(){
+      console.log('我是声明函数')
+    }
+    fn()
+
+    fun() //fun is not a function
+    var fun = function(){
+      console.log('我是赋值函数')
+    }
+    fun()
+  </script>
+</body>
+</html>
