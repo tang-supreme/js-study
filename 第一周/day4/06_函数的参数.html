@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    函数定义阶段的（）用来存放 **形参**
+    函数调用阶段的（）用来存放 **实参**
+    
+    形参：
+      就相当于在函数体内定义的一个变量，只能在函数体内使用，函数体外用不了
+      函数形参的值是什么，取决于函数调用的时候传递的是什么
+
+    实参：
+      就是函数调用的时候，给形参赋值
+    */
+
+    // function fn(a){
+    //   // 相当于在函数体内定义了一个变量叫做a，只不过现在是一个没有值的状态
+    //   // 并且这个a变量只能子函数内部使用，到了函数外部就不能用了
+    //   console.log(a) //定义没赋值的状态 a = undefined
+    // }
+    // fn()
+    // fn(100)
+    // fn(300)
+
+    // 判断一个数是不是质数
+    function fn(n) {
+      var flag = true
+      for (var i = 2; i < n; i++) {
+        if (n % i === 0) {
+          flag = false
+          break
+        }
+      }
+      console.log(flag ? n + '是质数' : n + '不是质数')
+    }
+
+    // 求2-200之间哪些是质数哪些不是质数
+    for (var i = 2; i <= 200; i++) {
+      // i就是2-200之间的每一个数字
+      fn(i)
+    }
+  </script>
+</body>
+
+</html>

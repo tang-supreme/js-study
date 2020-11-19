@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      函数参数的个数关系
+
+
+      两种参数数量一致
+        实参的顺序和形参的顺序一一对应
+      实参比形参多
+        参数也是一一对应的，但是多出来的实参，在函数体内没有形参接受而已
+      形参比实参多
+        参数也是一一对应的，多余的形参就是一个声名未赋值的状态，在函数体内使用的时候就是 undefiend
+
+    */
+
+    // function fn(a, b, c, d) {}
+
+    // 我本次执行的时候，10 赋值给了 a，20 赋值给了 b，30 赋值给了 c，40 赋值给 d
+    // fn(10, 20, 30, 40)
+
+    // function fn(a, b) {}
+
+    // 本次执行的时候 100 赋值给了 a，200 赋值给了 b，300 没有变量接受
+    // fn(100, 200, 300)
+
+    function fn(a, b, c) {}
+
+    // 本次执行的时候，1 赋值给了 a，2 赋值给了 b，c 是一个声名没有赋值的状态
+    fn(1, 2)
+  </script> 
+</body>
+</html>
