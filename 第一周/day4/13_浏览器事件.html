@@ -4,8 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script>
+    // btn.onclick = function(){
+    //   console.log('111')
+    // }
+
+    // 浏览器事件绑定在window上
+    // 表示当所有资源加载完毕后触发
+    window.onload = function(){
+      // 当我这个函数触发的时候，所有的页面资源已经加载完毕了
+      btn.onclick = function(){
+        console.log('222')
+      }
+    }
+  </script>
+  
+  <style>
+    body{
+      height: 20000px;
+    }
+  </style>
 </head>
 <body>
-  
+  <button id="btn">按钮</button>
+
+  <script>
+    // 改变尺寸的时候触发
+    window.onresize = function(){
+      console.log('屏幕大小发生改变了')
+    }
+
+    // 浏览器滚动条滚动的时候触发
+    
+  </script>
 </body>
 </html>
