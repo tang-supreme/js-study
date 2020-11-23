@@ -4,8 +4,149 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      background-color: pink;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="box"></div>
+
+  <input type="text" id="inp">
+
+  <form action="" id="f">
+    <input type="text" name="name">
+    <button>提交</button>
+  </form>
+  <script>
+    /*
+      鼠标事件：
+        click 单击
+        dblclick 双击
+        mouseover 鼠标移入
+        mouseout 鼠标移出
+        mouseenter 鼠标移入
+        mouseleave 鼠标移出
+        mousemove 鼠标移动
+        mousedown 鼠标按下
+        mouseup 鼠标抬起
+
+      键盘事件：
+        +绑定给谁
+          +键盘事件智能绑定给页面中能够选择到的元素
+          +是直接绑定给我们的页面
+        keydown 键盘按下
+        keyup 键盘抬起
+        keypress 键盘按下再抬起
+
+      表单事件：
+        blur 失去焦点
+        focus 获取焦点
+        change 文本框内容改变
+        input 文本框内容改变
+        submit 表单提交（专门给form标签使用）
+
+      浏览器事件：
+        onload 所有资源加载完毕
+        onresize 浏览器屏幕大小的改变的时候
+        onscroll 浏览器滚动条滚动的时候触发
+
+      其他事件：
+        transitionend 过度结束的时候触发
+        animationend 动画结束的时候触发    
+    */
+
+    // 绑定单机事件
+    box.onclick = function () {
+      console.log('单机')
+    }
+
+    // 绑定双击事件
+    box.ondblclick = function () {
+      console.log('双击')
+    }
+
+    // 鼠标移入事件
+    // box.onmouseover = function () {
+    //   console.log('鼠标移入了')
+    // }
+
+    // box.onmouseout = function () {
+    //   console.log('鼠标移出了')
+    // }
+
+    // 鼠标移入移出
+    // box.onmouseenter = function () {
+    //   console.log('移入')
+    // }
+
+    // box.onmouseleave = function () {
+    //   console.log('移出')
+    // }
+
+    // box.onmousedown = function () {
+    //   console.log('鼠标按下')
+    // }
+
+    // box.onmousemove = function () {
+    //   console.log('移动')
+    // }
+
+    // box.onmouseup = function () {
+    //   console.log('鼠标抬起来了')
+    // }
+
+
+
+    // 给页面绑定事件
+    // 我们的页面就是document
+    // document.onkeydown = function(){
+    //   console.log('键盘按下了')
+    // }
+
+    // 绑定给元素
+    // inp.onkeydown = function(){
+    //   console.log('在input里面键盘按下')
+    // }
+    // inp.onkeyup = function(){
+    //   console.log('在input里面键盘抬起')
+    // }
+    inp.onkeypress = function(){
+      console.log('123')
+    }
+
+
+    // 表单事件
+    inp.onblur = function(){
+      console.log('失去焦点')
+    }
+
+    inp.onfocus = function(){
+      console.log('获取焦点')
+    }
+    // change事件的判断改变时再你失去焦点的时候判断触发
+    inp.onchange = function(){
+      console.log('我改变了')
+    }
+    // input事件随着我们书写就能触发
+    inp.oninput = function(){
+      console.log('我被修改了')
+    }
+
+    // 表单提交事件
+    f.onsubmit = function(){
+      console.log('表单提交了')
+
+      return false
+    }
+  </script>
 </body>
 </html>
