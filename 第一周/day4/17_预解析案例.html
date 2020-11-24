@@ -6,6 +6,64 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      预解析的无节操
+        1.不管if条件是否成立，代码块里面的代码会进行预解析
+        2.在函数体内，return后面的代码虽然不会执行，但是会进行预解析    
+    */
+
+    // 1.
+    // var a = b = 0
+    // a = 10
+    // b = 10
+    // console.log(a)
+    // console.log(b)
+
+
+
+    /*
+      预解析
+        告诉浏览器 a 是一个可以使用的变量
+      代码执行
+        把变量c的值给到了b
+        直接报错，程序中断
+    */
+    // var a = b = c
+    // a = 10
+    // b = 10
+    // c = 10
+    // console.log(a)
+    // console.log(b)
+    // console.log(c)
+
+
+    //2.
+    // fn()
+    // function fn(){
+    //   console.log('hello world')
+    // }
+    // var fn = 100
+    // fn()
+    // fn()
+
+
+    //3.
+    // console.log(num) //undefined
+    // if(false){
+    //   var num = 100
+    // }
+    // console.log(num) //undefined
+
+
+    //4.
+    function fn(){
+      console.log(num)
+      return
+      var num = 100
+    }
+    fn()
+
+  </script>
 </body>
 </html>
