@@ -6,6 +6,26 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+
+    // return 的第二个作用就是中断函数
+    // 只要写在return后面的内容都不会执行
+    // 在函数里面遇到return关键字的时候，那么后面的内容就不会执行了
+
+    function fn(){
+      console.log(1)
+      console.log(2)
+      console.log(3)
+
+      return
+
+      console.log(4)
+      console.log(5)
+    }
+    fn()
+
+    var res = fn()
+    console.log(res)
+  </script>
 </body>
 </html>

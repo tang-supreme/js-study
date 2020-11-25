@@ -6,6 +6,18 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <button id="btn">点击一下试试</button>
+  <script>
+
+    // 把函数的地址给到了btn这个元素的onclick行为
+    // 这个东西叫做事件
+    // 事件源：谁身上的东西
+    // 事件类型：什么事件
+    // 事件处理函数：当这个元素的这个行为触发的时候，去执行哪一个函数
+
+    btn.onclick = function(){
+      console.log('我被电击了')
+    }
+  </script>
 </body>
 </html>
