@@ -6,6 +6,55 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      一旦出现私有作用域，那么就会分上下级的情况
+
+      一个变量的使用范围
+        + 一个变量只能在自己的作用域内部使用
+        + 自己的上级作用域不能用
+        + 自己的下级作用域可以使用
+
+      window 作用域
+        下级fn私有作用域
+      
+      window 的变量在 fn 私有作用域里面可以使用
+        fn 私有作用域的变量在 window 上不能用
+
+      作用域和函数的调用没有关系
+        只看函数的定义
+        函数定义在什么位置，就决定了他的作用域在哪
+    */
+    // var num = 100
+    // function fn(){
+    //   var n1 = 200
+    //   console.log(num)
+    // }
+    // fn() //100
+    // console.log(n1) //n1 is not defined 
+
+
+    /*
+      window
+        num 变量
+        fn1 变量
+        fn2 变量
+        
+        fn1 作用域
+        fn2 作用域
+          n1
+    */  
+    var num = 100
+    function fn1(){
+      console.log(n1)
+    }
+    function fn2(){
+      var n1 = 100
+      fn1()
+    }
+    fn2()
+
+
+  </script> 
 </body>
 </html>
