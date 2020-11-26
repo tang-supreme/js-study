@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <script>
+    /*
+      作用域
+       ++ 就是一个变量可以使用的范围
+
+      **只有函数生成私有作用域
+
+      作用域分为两种
+        + 全局作用域
+          + 当你的页面打开的时候就会生成
+        + 私有作用域（局部作用域）
+          + 每一个函数都是私有作用域
+    */
+
+    /*
+      全局作用域
+        有一个 num
+        有一个 fn
+      叫做 fn 的私有作用域
+        有一个 n1
+        有一个 fun
+      在 fn 私有作用域里面的fun私有作用域
+        有一个 n2
+    */
+    var num = 100
+    function fn() {
+      var n1 = 200
+      function fun() {
+        var n2 = 300
+      }
+    }
+  </script>
 </body>
+
 </html>
