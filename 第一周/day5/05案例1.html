@@ -6,6 +6,40 @@
   <title>Document</title>
 </head>
 <body>
+  <script>
+    var num = '我是全局变量 num'
+    function fn(){
+      var num = '我是 window > fn私有变量 num'
+
+      // 这句代码是定义变量？
+      // 这句代码是再给 fn 变量赋值
+
+      // 自己作用域内部没有fn变量
+      // 应该向上级查找
+      // 发现上级有一个fn变量，是一个函数地址
+      // 给全局的fn变量换了一个地址
+      // 这句代码执行完毕以后
+      // 全局作用域下的 fn 变量就变成了这个函数
+      fn = function(){
+        console.log(num)
+        // 我的上一级作用域不管怎么调用
+        // 在我定义的时候就已经决定了
+        // 我的上一级是 window 》 fn
+        // 在访问 num 变量
+        // 我自己没有，那么去我的上一级查找
+      }
+    }
+    fn() // 不会在控制台打印出任何东西，只是用一个新的函数把之前fn的函数地址替换掉
+    fn() // 执行的是新的哪个函数 function (){console.log(num)}
   
+    /*
+      全局
+        num 变量 = '我是全局变量 num'
+        fn 变量
+
+        fn 作用域
+          num 变量 = '我是window>fn私有变量num'
+    */
+  </script>
 </body>
 </html>
