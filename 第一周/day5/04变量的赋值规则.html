@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <script>
+    /*
+      赋值规则
+        就是当你想给一个变量赋值的时候，你是再给哪一个作用域里面的变量赋值
+      
+      规则：
+        先在自己的作用域里面查找，如果有这个变量，那么直接赋值，停止查找
+        如果没有，那么去上一级作用域里面查找，如果有，那么给上一级的这个变量赋值，停止查找
+        如果还没有，那么就再去上一级作用域里面查找，如果有，那么就直接赋值，停止查找
+        如果还没有，那么就再上一级，直到全局作用域都没有这个变量
+          + 那么直接把这个变量定义为全局变量再赋值
+    */
+
+    // var num = 10
+    function fn() {
+      // var num = 100
+      function fn() {
+        // var num = 200
+        num = 300 //是在给num赋值
+        // 现在自己作用域里面找
+        console.log('window > fn > fn: ' + num)
+      }
+      fn()
+      console.log('window > fn:' + num)
+    }
+    fn()
+    console.log('window:' + num)
+  </script>
 </body>
+
 </html>
