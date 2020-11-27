@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <script>
+    // 递归是语言中的一种使用函数的手段
+    //  就是一个函数自己调自己
+    //  叫做递归函数
+
+    // 下面这个是一个递归函数,只不过是一个死递归
+    function fn() {
+      // 在函数内部直接调用自己
+      fn()
+    }
+    fn()
+  </script>
 </body>
+
 </html>
