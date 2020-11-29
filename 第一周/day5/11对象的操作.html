@@ -6,6 +6,49 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    // 操作对象
+    // 在js里面统一把 . 翻译成的
+    // . 是对象操作的语法，只能操作对象
+    var obj = {}  //空的对象
+    var obj2 = {}
+
+    // 1.创建对象
+    // var obj = {}
+
+    // 2.向对象中添加成员
+    // 使用点语法
+    // 向对象中添加两个成员
+    obj.name = 'jack'
+    obj.age=19
+    obj2.name='tom'
+    obj2.age=20
+
+    // console.log(obj)
+    // console.log(obj2)
+
+    // 3.删除某一个对象成员
+    // 使用delete关键字
+
+    delete obj.name
+    delete obj2.age
+
+    // console.log(obj)
+    // console.log(obj2)
+
+    // 4.修改某一对象成员
+    // 对象有一个特征，不重名
+    // 使用点语法
+    // 当我使用点语法赋值的时候，如果对象中没有这个成员就是添加
+    // 如果对象中有这个成员就是修改
+    obj.age = 22
+
+    // 5.访问某一个对象成员
+    // 直接使用点语法
+    console.log(obj)
+    console.log(obj.age) //返回的就是obj空间中存储的age的值
+
+    // console.log(obj)
+  </script>
 </body>
 </html>

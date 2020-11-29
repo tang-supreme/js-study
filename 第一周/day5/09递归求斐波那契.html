@@ -3,9 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
-  
+
+  <script>
+    /*
+      斐波那契
+        1 1 2 3 5 8 13 21 34 55 ...
+        第一个数字和第二个数字固定式 1
+        从第三个开始时前两个数字的和
+
+      写一个函数传递一个数字
+        结果就是这个数列的第传递数字这一位是多少
+
+
+    */
+
+    function fn(n) {
+
+      // 先写停
+      if (n === 1 || n === 2) {
+        return 1
+      }
+
+      return fn(n - 1) + fn(n - 2)
+    }
+
+    console.log(fn(20))
+
+    /*
+      fn(3)
+        fn(2)
+        fn(1)
+
+      fn(4)
+        fn(3)
+          fn(2)
+          fn(1)
+        fn(2)
+
+      fn(5)
+        fn(4)
+          fn(3)
+            fn(2)
+            fn(1)
+          fn(2)
+        fn(3)
+          fn(2)
+          fn(1)
+
+      fn(8)
+        fn(7)
+          fn(6)
+            fn(5)
+              fn(4)
+                fn(3)
+                  fn(2)
+                  fn(1)
+                fn(2)
+              fn(3)
+                fn(2)
+                fn(1)
+            fn(4)
+              fn(3)
+                fn(2)
+                fn(1)
+              fn(2)
+          fn(5)
+            fn(4)
+              fn(3)
+                fn(2)
+                fn(1)
+              fn(2)
+            fn(3)
+              fn(2)
+              fn(1)
+        fn(6)
+          fn(5)
+            fn(4)
+              fn(3)
+                fn(2)
+                fn(1)
+              fn(2)
+            fn(3)
+              fn(2)
+              fn(1)
+          fn(4)
+            fn(3)
+              fn(2)
+              fn(1)
+            fn(2)
+    */
+
+
+
+  </script>
+
 </body>
 </html>
