@@ -8,7 +8,101 @@
 </head>
 
 <body>
+  <script>
+    // var arr = ['hello','world','你好','世界']
 
+    // 5.concat()对数组进行拼接
+    // 语法:数组.concat(你要拼接的内容)
+    // 不改变原始数组
+    // 返回值是拼接后的数组
+    // var res = arr.concat(['a','b','c'],['www','com'])
+    // console.log(arr)
+    // console.log(res)
+
+    // 6.splice()对数组进行截取
+    // 语法:数组.splice(开始的索引,截取多少个)
+    // 直接改变原始数组
+    // 返回值:以数组的形式返回截取出来的内容(不管截取多少个都是以数组的形式返回)
+    // var res = arr.splice(1,0)
+    // console.log(arr)
+    // console.log(res)
+
+    // splice使用方式2
+    // 当第二个参数不传递的时候,就是从哪个索引开始截取的到数组的末尾
+    // var res = arr.splice(1)
+    // console.log(arr)
+    // console.log(res)
+
+    // splice使用方式3
+    // 从第三个参数开始,都是替换掉截取的位置
+    // var res = arr.splice(1,2,'a','b','c','d')
+    // console.log(arr)
+    // console.log(res)
+
+    // 有一个数组
+    // 按照顺序排列好的
+    // 从索引2的位置删除0个,用新的替换从索引2开始替换
+    // 从索引3的位置删除0个,用新的替换从索引3开始替换
+    // 从哪个索引位置开始删除,就从哪个索引位置开始替换
+    // var arr = ['a','b','c','d','e','f']
+    // var num = 4
+    // arr.splice(2,0,'fddfdg')
+    // console.log(arr)
+
+
+    // 7.reverse()反转数组
+    // 语法:数组.reverse()
+    // 直接改变原始数组
+    // 返回值:反转后的数组
+    // var res = arr.reverse()
+    // console.log(arr)
+    // console.log(res)
+
+    // 8.sort()数组排序
+    //  第一种使用方式,排序方式是按照一位一位开看的
+    //  语法：数组.sort()
+    //  直接改变原始数组
+    //  返回值：排序好的数组
+    // var arr = [1,5,8,0,23,11,4,9,3,25]
+    // var res = arr.sort()
+    // console.log(arr)
+    // console.log(res)
+    //  第二种使用方式，按照数字大小排序
+    //  语法：数组.sort(function(a,b){return a-b}) 升序排列
+    //  语法：数组.sort(function(a,b){return b-a}) 降序排列
+    //  直接改变原始数组
+    //  返回值：被排序好的数组
+    // var res = arr.sort(function(a,b){
+    //   return a-b
+    // })
+    // console.log(arr)
+    // console.log(res)
+
+
+    // 9.join()把数组连接成一个字符串
+    // 语法：数组.join(以什么字符连接)参数可以不写，不写默认逗号连接
+    // 不改变原始数组
+    // 返回值：就是用指定字符串连接好的字符串
+    // var arr = [1,2,3,4]
+    // var res = arr.join('&*&')
+    // console.log(arr)
+    // console.log(res)
+
+    // 10.slice()截取数组
+    // 语法：数组.slice(开始的索引，结束的索引) 包前不包后
+    // 不改变原始数组
+    // 返回值：以数组的形式返回截取的内容
+    var arr = ['t','a','n','g','x','i','n']
+    // var res = arr.slice(2,5)
+    // console.log(arr)
+    // console.log(res)
+
+    // 第二个参数不写是开始索引截取到末尾
+    var res = arr.slice(2)
+    console.log(arr)
+    console.log(res)
+
+  </script>
 </body>
 
 </html>
