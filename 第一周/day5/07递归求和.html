@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
+
+
+
   <script>
     /*
       递归求和
-        1-5的和
+        1 ~ 5 的和
         1 + 2 + 3 + 4 + 5
 
         1 + 2 = 3
@@ -17,29 +21,70 @@
         6 + 4 = 10
         10 + 5 = 15
 
-        function fn(n){
-          n === 5
-          5 + fn(4)
-            // 等 fn(4)执行完毕才能继续
-            n === 4
-            4 + fn(3)
-              // 等fn(3)执行完毕才能继续
-              n === 3
-              3 + fn(2)
-                // 等 fn(2)执行完毕才能继续
-                n ===2
-                2 + fn(1)
-                  // 等fn(1)执行完毕才能继续
-                  n === 1
-                  if(n === 1){
-                    return 1
-                  }
-                
-            // 5 + (1-4)的和
-            return n + fn(n - 1)
+        function fn(n) {
+
+          // n === 5
+          // 5 + fn(4)
+          //   等 fn(4) 执行完毕才能继续
+          //    n === 4
+          //    4 + fn(3)
+                  等 fn(3) 执行完毕才能继续
+                  n === 3
+                  3 + fn(2)
+                    等 fn(2) 执行完毕才能继续
+                    n === 2
+                    2 + fn(1)
+                      等 fn(1) 执行完毕才能继续
+                      n === 1
+                      if (n === 1) {
+                        return 1
+                      }
+
+          // 5 + (1 ~ 4) 的和
+          return n + fn(n - 1)
         }
+
         var res = fn(5)
     */
+
+    /*
+      全局由一个 fn 变量是一个函数
+        res = fn(5) // 15
+        全局 fn 函数在执行 n === 5
+        if 条件为 false
+        return 5 + fn(4)  return 5 + 10
+          全局 fn 函数在执行 n === 4
+          if 条件为 false
+          return 4 + fn(3)  return 4 + 6
+            全局 fn 函数在执行 n === 3
+            if 条件为 false
+            return 3 + fn(2)  return 3 + 3
+              全局 fn 函数在执行 n === 2
+              if 条件为 false
+              return 2 + fn(1)   return 2 + 1
+                全局函数 fn 在执行 n === 1
+                if 条件为 true
+                return 1
+
+      在写递归的时候需要注意
+        - 先写停
+
+      递归
+        - 慎用
+    */
+
+    function fn(n) {
+
+      if (n === 1) {
+        return 1
+      }
+
+      return n + fn(n - 1)
+    }
+
+    var res = fn(5)
+
+
   </script>
 </body>
 </html>
