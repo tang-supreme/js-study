@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var num = 100
+		var num2 = 100
+		// 基本数据类型之间的比较就是进行值的比较
+		console.log(num === num2) //true
+
+		var obj = {
+			name : 'jack'
+		}
+		var obj2 = {
+			name : 'rose'
+		}
+		// 复杂数据类型是地址的比较
+		console.log(obj == obj2) //false
+
+		var obj3 = {
+			name:'tom'
+		}
+
+		// 现在obj3和obj4存储的是一个地址
+		var obj4 = obj3
+		console.log(obj4 == obj3)
+	</script>
+</body>
+</html>
