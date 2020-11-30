@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/*
+			函数的形参和实参
+				形参是函数内部的变量
+				实参是给形参赋值
+			形参和实参之间的交互也是变量赋值的一种
+		*/
+
+		// var num = 100
+		// function fn(n){
+		// 	// 当n接受到num的值以后
+		// 	// n 和 num就是两个变量
+		// 	// 因为赋的是基本数据类型
+		// 	// 两个变量没有关系 
+		// 	n = 200
+		// 	console.log(n) //200
+		// }
+		// fn(num)
+		// console.log(num) //100
+
+
+
+		var obj = {
+			name: 'jack'
+		}
+		function fn(o){
+			// 当我的o接受到实参传递的值以后
+			// o就是指向外部那个obj那个存储空间的地址
+			// 函数内部的o和函数外部 的obj变量存储的是用一个空间地址
+			// 他们两个变量操作的就是一个对象空间
+			o.name = 'rose'
+			console.log(o.name) //rose
+		}
+		fn(obj)
+		// 是把obj里面的存储的地址传递到了函数内部的形参o上
+		console.log(obj.name) //rose
+	</script>
+</body>
+
+</html>
