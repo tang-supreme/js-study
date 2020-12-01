@@ -6,6 +6,46 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      我们的内存分为两种
+        1.栈内存
+        2.堆内存
+
+      栈内存是有队列关系
+      堆内存是没有顺序关系
+
+      基本数据类型就是直接存储在栈里
+      复杂数据类型在堆里面存储，只有地址在栈里面
+
+      所有的复杂数据类型在栈里面存储的都是地址
+      所有佛如基本数据类型在栈里面存储的都是值
+    */
+
+    // var num = 100
+    // var boo = true
+
+    // var obj = {
+    //   name = 'jack',
+    //   o:{
+    //     name = 'rose'
+    //   }
+    // }
+      
+      var obj = {
+        name: 'jack',
+        o:{
+          name:'rose',
+          o2:{
+            name:'tom'
+          }
+        }
+      }
+      console.log(obj.o.o2.name)
+      console.log(obj.o.name)
+      console.log(obj.name)
+      
+    
+  </script>
 </body>
 </html>

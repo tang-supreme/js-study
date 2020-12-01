@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 2.编写一个函数，计算任意两个数字之间所能组成的奇数个数，数字必须是个位数
+    /*
+    当 i=0 的时候
+      00
+      01
+      02
+    当 i=1 的时候
+      10
+      11
+      12
+    */
+
+    function fn(a, b) {
+      for (var i = a; i <= b; i++) {
+        // console.log('i是' + i)
+
+        for (var j = a; j <= b; j++) {
+          // console.log('j是' + j)
+
+          var str = '' + i + j //把两个数字结婚起来
+          // 判断是不是奇数
+          if (str % 2 !== 0) {
+            console.log('组成的奇数为：' + str)
+          }
+        }
+      }
+    }
+    fn(0, 2)
+  </script>
+</body>
+
+</html>

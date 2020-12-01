@@ -6,6 +6,31 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    // 变量的赋值关系
+    // 基本数据类型赋值以后，两个变量不在有关系
+    // 引用数据类型赋值以后，两个变量指向同一个数据存储空间
+
+    var num = 100
+    var num2 = num
+    num2 = 200
+    console.log(num)
+    console.log(num2)
+
+    // obj存储的是一个地址
+    var obj = {
+      name : 'jack'
+    }
+    var obj2 = obj
+    // 把obj存储的地址给了obj2，obj和obj2两个变量存储的地址一致
+    // 指向同一个在堆里面的空间
+    // obj2去到空间里面把数据变了
+    // 将来obj去的时候也是改变了
+    obj2.name = 'rose'
+
+    console.log(obj.name)
+    console.log(obj2.name)
+
+  </script>
 </body>
 </html>
