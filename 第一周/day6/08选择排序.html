@@ -8,7 +8,79 @@
 </head>
 
 <body>
+	<script>
+		/*
+			selectsort选择排序
+			选择排序：
+				1.假设数组中的第0个是最小的
+				 然后遍历数组，从1开始遍历
+				 如果谁比我还小，那么我就记录下你的索引
+				 遍历一遍以后，能得到一个最小数字的索引
+				 让这个最小的数字的索引和0个交换位置
+				2.假设数组中的第1个数字最小
+				 然后遍历数组，从2开始遍历
+				 如果谁比我还小，那么我就记录下你的索引
+				 遍历一遍以后，能得到一个除了第0个以外的最小的数字的索引
+				 让这个最小的数字和1个交换位置
 
+			上面的代码重复执行数组的length-1遍就可以了
+
+			第一遍 假设 0 循环开始 1 交换 0
+			第二遍 假设 1 循环开始 2 交换 1
+			第三遍 假设 2 循环开始 3 交换 2
+		*/
+		// var arr = [3, 5, 1, 8, 6, 7, 9, 2, 4]
+		// var minIndex = 0
+		// for(var i= 1;i<arr.length;i++){
+		// 	if(arr[i]<arr[minIndex]){
+		// 		minIndex = i
+		// 	}
+		// }
+		// 如果出现刚刚好我假设的索引就是真实最小的数字的索引
+		// 不需要交换
+		// 我假设的索引和真实最小数字的索引不一样的时候交换
+		// console.log(minIndex)
+		// if(0!==minIndex){
+		// 	var temp = arr[0]
+		// 	arr[0] = arr[minIndex]
+		// 	arr[minIndex] = temp
+		// }
+
+		// for (var j = 0; j < arr.length - 1; j++) {
+		// 	var minIndex = j
+		// 	for (var i = j + 1; i < arr.length; i++) {
+		// 		if (arr[i] < arr[minIndex]) {
+		// 			minIndex = i
+		// 		}
+		// 	}
+		// 	var tmp = arr[j]
+		// 	arr[j] = arr[minIndex]
+		// 	arr[minIndex] = tmp
+		// }
+		// console.log(arr)
+
+		/*
+			选择排序：
+				1.假设外层循环变量
+				2.里层循环开始时外层变量+1
+				3.交换外层循环变量
+		*/
+		var arr = [3, 5, 1, 8, 6, 7, 9, 2, 4]
+		for (var i = 0; i < arr.length - 1; i++) {
+			var minIndex = i
+			for (var j = i + 1; j < arr.length; j++) {
+				if (arr[j] < arr[minIndex]) {
+					minIndex = j
+				}
+			}
+			if (minIndex !== i) {
+				var tmp = arr[i]
+				arr[i] = arr[minIndex]
+				arr[minIndex] = tmp
+			}
+		}
+		console.log(arr)
+	</script>
 </body>
 
 </html>
