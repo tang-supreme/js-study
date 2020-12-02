@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数
+    // 然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。
+    var arr = []
+    for (var i = 1; i <= 60; i++) {
+      if (i % 2 === 0) {
+        arr.push(i)
+      }
+    }
+    console.log(arr)
+    var newArr = []
+    var sum = 0
+    for (j = 0; j < arr.length; j++) {
+      sum += arr[j]
+      if ((j + 1) % 5 === 0) {
+        newArr.push(sum / 5)
+        sum = 0
+      }
+    }
+    console.log(newArr)
+  </script>
+</body>
+
+</html>
