@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     // 编写函数map(arr) 把数组中的每一位数字都增加30%，并返回一个新数组
+    var arr = [10, 100, 1000]
+    console.log(arr)
+    function map(arr) {
+      // 形参arr是函数内部的私有变量
+
+      // 当我在函数内部使用arr的时候，因为自己作用于内部有，就使用自己的
+      // 因为实参传递的是复杂数据类型，形参和外部变量操作的是同一个对象空间
+      var newArr = []
+      // 把原先数组中的每一个都*1.3
+      for (var i = 0; i < arr.length; i++) {
+        newArr.push(arr[i] * 1.3)
+        // arr[i]就是原先数组中的每一个数据
+        // arr[i]*1.3
+      }
+      return newArr
+    }
+    // 传递了一个复杂数据类型
+    var res = map(arr)
+    console.log(res)
 
 
 
-    
   </script>
 </body>
+
 </html>

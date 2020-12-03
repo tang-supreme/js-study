@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     // 编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+    var arr = [1, 2, 3, 4, 5, 60]
+    function has(arr, n) {
+      // 判断arr里面有没有n这个东西
+      // 先假设数组里面没有这个数据
+      var flag = false
+      // 遍历数组
+      for (var i = 0; i < arr.length; i++) {
+        // 判断有还是没有
+        if (arr[i] === n) {
+          flag = true
+        }
+      }
+      // 循环结束以后，如果flag是false
+      // 证明数组里面一个和n一样的数据都没有
+      // 如果flag===true
+      // 证明数组至少有一个是和n一样的数据
+      return flag
+    }
+    var res = has(arr, 60)
+    // 判断arr这个数组里面有没有4这个数据
+    console.log(res)
+    // 如果res ===true，证明arr这个数组里面有4这个数据
 
 
 
 
-    
   </script>
 </body>
+
 </html>

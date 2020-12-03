@@ -3,15 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
+
+
+
   <script>
-     // 有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+    // 有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
 
+    var arr = [10, 20, 30, 40, 50]
 
+    var n = 31
 
-     
+    // 应该是 大于arr[0] 小于arr[arr.length - 1]
+    if (n > arr[0] && n < arr[arr.length - 1]) {
+      // 遍历数组，看看这个数组是在谁和谁的中间
+      for (var i = 0; i < arr.length; i++) {
+
+        // 判断在谁和谁的中间
+        if (n >= arr[i] && n <= arr[i + 1]) {
+          // 找位置以后，就应该插入数据
+          arr.splice(i + 1, 0, n)
+          // 打断循环
+          break
+        }
+
+      }
+    }
+
+    // 大于或者小于单独判断
+    if (n <= arr[0]) {
+      arr.unshift(n)
+    }
+
+    if (n > arr[arr.length - 1]) {
+      arr.push(n)
+    }
+
+    /*
+      i === 0    len === 5    if true   arr.splice(1, 0, 11)
+      i === 1    len === 6    if true   arr.splice(2, 0, 11)
+      i === 2    len === 7    if true   arr.splice(3, 0, 11)
+      死循环
+    */
+
+    console.log(arr)
+
   </script>
 </body>
 </html>

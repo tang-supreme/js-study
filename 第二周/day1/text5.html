@@ -3,16 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
+
   <script>
     // 创建一个对象，该对象存储一个学生的信息，
     // 该对象包含学号、身份证、年龄、性别、所学专业等属性信息，
     // 同时该对象包含一个自我介绍的方法，用来输出该对象的所有信息
 
+    var obj = {
+      studentId: 1919,
+      numberId: 110108,
+      age: 20,
+      gender: '男',
+      class: 'FE',
+      hello: function () {
+        console.log(obj.studentId, obj.numberId, obj.age, obj.class, obj.gender)
+      }
+    }
 
-    
+    obj.hello()
+
   </script>
 </body>
 </html>
