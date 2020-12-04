@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // for in 循环
+    // 一般用来遍历对象
+    // 语法：for (var attr in obj){}
+    // 1.初始化attr
+    // 2.条件判断attr in obj
+    // 3.执行代码
+    // 4.自身改变attr是随着循环不停的在改变
+
+    // 你的obj中有多少各成员，这个循环就执行多少回
+    var obj = {
+      name: 'jack',
+      age: 18,
+      gender: '男',
+    }
+    var attr = 'name'
+
+    // 点语法 点后面的不是变量，就是对象中的成员
+    console.log(obj.attr)
+
+    // 数组关联语法才会把[]里面的东西当作变量来看待
+    console.log(obj[attr])
+
+    // 对象有多少个成员，这个东西就执行多少回
+    for(var attr in obj){
+      console.log('我执行了')
+      console.log(attr) //attr 每一次拿到的就是对象中的某一个成员名称
+      console.log(obj[attr])
+
+      // 随着循环
+      // 第一次 attr === 'name'
+      // 第二次 attr === 'age'
+      // 第三次 attr === 'gender'
+
+      // console.log(obj[attr])
+      // 第一次 obj['name']
+      // 第二次 obj['age']
+      // 第三次 obj['gender']
+    }
+
+    var arr2 = ['ni','hao','wo','shi','tx']
+    for(var item in arr2){
+      console.log(item)
+      console.log(arr2[item])
+    }
+  </script>
+</body>
+
+</html>

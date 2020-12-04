@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 数组常用方法之 ES5
+    // var arr = ['hello', 'world', 'Jack', 'Rose', 'world']
+
+    // 1.indexOf() 查看数组中是否有该内容
+    //    语法：数组.indexOf(你要查找的内容)
+    //    不改变原始数组
+    //    返回值：
+    //       如果找到，返回的是这个数据的索引位置（只找到第一个）
+    //       如果没有找到，返回值是-1
+    // var res = arr.indexOf('world')
+    // console.log(arr)
+    // console.log(res)
+
+    // 第二种使用方式
+    //    语法：数组.indexOf（你要查找的内容，你要从哪一个索引开始查找）
+    //    返回值和indexOf的第一种用法一样
+    // var res2 = arr.indexOf('world',2)
+    // console.log(res2)
+
+
+    
+    // 2.forEach() 用来遍历数组的，es5对for循环的扩展
+    //    语法：数组.forEach(是一个函数)
+    //      数组有多少项，里面的这个函数就执行多少回
+    //      返回值：没有返回值
+    // var res = arr.forEach(function(item,index,arr){
+    //   console.log('我执行了') //有多少项就执行多少回
+    //   console.log(item) //表示数组中的每一个成员
+    //   console.log(index) //表示的就是循环过程中的索引
+    //   console.log(arr) //原始数组
+    // })
+    // console.log(res)
+
+
+
+    // 3.map() 用来映射数组的，对原始数组中的每一项进行操作，操作完毕以后放在新的数组里返回
+    //    语法：数组.map（传递一个函数）
+    //    返回值：是一个新数组
+    // var res = arr.map(function(item,index,arr){
+    //   // 这个函数可以接受三个参数，会随着遍历自动帮我们传递进来
+    //   console.log(item)
+    //   console.log(index)
+    //   console.log(arr)
+
+    //   // 这个地方是一个函数
+    //   // 随着循环这个函数不停的执行
+    //   // 得到undefined是因为这个函数没有返回值
+    //   return item+'啊哈哈'
+    // })
+    // console.log(arr) //原始数组
+    // console.log(res) //新数组
+
+
+
+    // 4.filter() 对原始数组进行筛选，把满足条件的筛选出来，放在一个新的数组里面返回
+    var arr = [1,2,3,4,5,6,7]
+    // var res = arr.filter(function(item,index,arr){
+    //   // 这个函数会随着循环不停的执行
+    //   // 我接受三个参数
+
+    //   // 使用return的方式来书写我的条件
+    //   // 如果后面的条件满足，那么就是return true
+    //   // 如果后面的条件不满足，那么就是return false
+    //   // 如果你的条件是true，那么这个item就会被放入新的数组
+    //   // 如果你的条件是false，那么这个item就不会被放入新的数组
+    //   return item !== 3
+    // }) 
+    // console.log(res) 
+
+
+
+    // 5.some() 对原始数组进行遍历，只要有一项满足我的条件，那么就返回true，如果每一项都不满足，那么就返回false
+    //    语法：数组.some(传递一个函数)
+    // var res = arr.some(function(item,index,arr){
+    //   // 随着循环的不停执行
+    //   // 我可以接受三个参数
+
+    //   // 条件也是以return的形式返回
+    //   // 随着循环,这个条件会被返回length
+    //   // return 的这些里面只要有一个是true,那么整个some的返回值是true
+    //   // return 的这些里面一个true都没有,那么整个some的返回值是false
+    //   return item >=7
+    // })
+    // console.log(res)
+
+
+    
+    // 6.every() 对原始数组进行遍历，需要每一个都满足条件的时候，返回true，只要有一个不满足返回false
+    //    语法：数组.every(传递一个函数)
+    // var res = arr.every(function(item,index,arr){
+    //   // 以return的形式进行条件返回
+    //   // 会有若干个true或者false返回
+    //   // 只有所有的返回都是true的时候，every的返回值才是 true
+    //   // 只要有一个返回的是false，那么every的返回值就是false
+    //   return item >1
+    // })
+    // console.log(res)
+  </script>
+</body>
+</html>
