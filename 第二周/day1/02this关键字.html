@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // this 这个
+    // this是一个在作用域里面使用的 关键字
+    // 1.在全局作用域里面使用
+    // 2.在私有作用域里面使用（在函数内部使用）
+
+    // 在全局里面使用的时候比较少
+    // this全局就是Window
+
+    // this一般都是在函数内部使用
+    // this和函数的定义没有关系，只看函数怎么调用
+    // 1.全局调用 直接写函数名的时候，函数内部的this就是Window
+    function fn() {
+      console.log(this)
+    }
+    fn()
+
+    // 2.方法调用 对象名称.函数名() 的时候，函数内部this就是点前面的那个对象
+    // var obj = {
+    //   name:'hack',
+    //   age:'18',
+    //   id:2222,
+    //   hello:function(){
+    //     //这里的this就是obj
+    //     //this.name ==>obj.name
+    //     console.log(this.name)
+    //   }
+    // }
+    // obj.hello()
+
+
+
+    // var obj = {
+    //   name:'obj对象',
+    //   // fn这个变量存储的是一个函数地址
+    //   // a是obj这个对象中的成员
+    //   // 把fn存储的地址赋值给了obj的a成员
+    //   a:fn
+    // }
+    // obj.a()
+    // // fn和obj.a 指向一个函数空间
+    // // 他们两个执行的时候调用的是一个函数
+
+
+    
+    var obj ={
+      name:'我是obj对象空间',
+      fun:function(){
+        console.log(this)
+      }
+    }
+    // obj.fun存储的是什么  一个函数地址
+    // 把这个函数地址赋给l a 变量
+    // 现在a变量和obj.fun指向同一个函数
+    var a = obj.fun
+    // 两个调用方式调用的是同一个函数
+    obj.fun()
+    a()
+  </script>
+</body>
+
+</html>
