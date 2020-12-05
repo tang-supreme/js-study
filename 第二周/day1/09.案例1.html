@@ -6,6 +6,23 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    // 反转字符串
+    // abcdefg
+
+    // 1.split() 可以把字符串切割成数组
+    // 2.reverse() 把数组调转
+    // 3.join() 把数组连接成字符串
+
+    var str = 'abcdefg'
+    var res = str.split('')
+    var res2 = res.reverse()
+    var res3 = res2.join('')
+    console.log(str)
+    console.log(res3)
+    
+    var res4 = str.split('').reverse().join('')
+    console.log(res4)
+  </script>
 </body>
 </html>
