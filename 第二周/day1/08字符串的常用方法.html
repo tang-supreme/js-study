@@ -1,34 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     // 字符串的常用方法
-    var str = 'hello world'
+    // var str = 'hello world'
 
     // 1.charAt() 按照索引查找字符串中的内容，并返回
-    
+    //    语法：字符串.charAt(你要查找的索引)
+    //    返回值：对应索引上的字符串(没有就是空字符串)
+    // var res = str.charAt(11)
+    // console.log(str)
+    // console.log(res)
+
     // 2.charCodeAt()
+    //    语法： 字符串.charCodeAt(你要查找的索引)
+    //    返回值：是对应索引位置的字符的编码
+    // var res = str.charCodeAt(0)
+    // console.log(str)
+    // console.log(res)
 
     // 3.substring()用来截取字符串的
+    //    语法：字符串.substring(开始位置索引，结束位置索引)包前不包后
+    //    不改变原始字符串
+    // var res = str.substring(1,4)
+    // console.log(str)
+    // console.log(res)
 
     // 4.substr() 用来截取字符串
+    //    语法：字符串.substr(开始位置的索引，多少个)
+    //    不改变原始字符串
+    //    返回值是截取出来的字符串
+    // var res = str.substr(1,4)
+    // console.log(res)
 
     // 5.concat() 用来拼接字符串
+    //    语法：字符串.concat(要拼接的字符串)    
+    //    不改变原始字符串
+    //    返回值：拼接好的字符串
+    // var res = str.concat('你好 世界')
+    // console.log(str)
+    // console.log(res)
 
     // 6.slice() 用来截取字符串
+    //    语法：字符串.slice(从哪个索引开始，结束索引)包前不包后
+    //    不改变原始字符串
+    //    返回值：就是截取的字符串
+    // var res = str.slice(1,4)
+    // console.log(res)
 
     // 7.toUpperCase() 用来把字符串转成大写
+    // var res = str.toUpperCase()
+    // console.log('我是大写' + res)
 
     // 8.toLowerCase() 用来把字符串转成小写
+    // var res2 = str.toLowerCase()
+    // console.log('我是小写' + res2)
 
     // 9.split() 把字符串进行切割，按照你给的切割条件，把字符串分为几截，然后放在一个数组中返回
+    //    返回值：是一个数组（按照你的条件切开的几截）
+    // var str = '1-2-3-4-5-6-7'
+    // var res = str.split('-')
+    // var res2 = str.split('')
+    // console.log(res)
+    // console.log(res2)
 
     // 10.replace() 替换字符串的内容
+    //    语法： 字符串.replace(把什么，替换成什么)
+    // var str = '你好，世界，你好，世界，你好，世界'
+    // var res = str.replace('你好', 'hello')
+    // var res2 = res.replace('你好', 'hello')
+    // var res3 = res2.replace('你好', 'hello')
+    // console.log(str)
+    // console.log(res)
+    // console.log(res2)
+    // console.log(res3)
+
+
+
+    // 字符串常用方法ES5
+    // 1.indexOf() 查找某一个字符串的索引位置
+    //    语法：字符串.indexOf(字符片段)
+    //    返回值：
+    //      如果找到对应的字符串片段，那么返回的是字符串片段开始位置的索引
+    //      如果没有找到对应的字符片段，那么返回 -1
+    var str = 'hello world'
+    var res = str.indexOf('llo')
+    console.log(res)
+
+    // 有第二种使用方式
+    //    从哪个索引位置开始查找(包括这个位置)
+    var res2 = str.indexOf('l',5)
+    console.log(res2)
   </script>
 </body>
+
 </html>

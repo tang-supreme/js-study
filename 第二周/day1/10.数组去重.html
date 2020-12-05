@@ -6,6 +6,47 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    // 数组去重
+    var arr = [1,2,1,3,4,5,6,4,5,3,2,1,2,3,4,5,6]
+
+    // 方法1：
+    //    借助一个新数组
+    var newArr = []
+    // 遍历原始数组
+    for(var i= 0;i<arr.length;i++){
+      console.log(arr[i])
+      // 把数组中的每一个都添加到新的数组里面
+      // 但不是全添加，新数组中没有的我才添加，如果数组中有了，我就不添加了
+      // 判断数组中没有我
+      if(newArr.indexOf(arr[i]) === -1){
+        newArr.push(arr[i])
+      }
+    }
+    /*
+      i === 0     newArr.indexOf(arr[0]) === -1     newArr.push(arr[0])
+      i === 1     newArr.indexOf(arr[1]) === -1     newArr.push(arr[1])
+      i === 2     newArr.indexOf(arr[2]) === 1
+      i === 3     newArr.indexOf(arr[3]) === -1     newArr.push(arr[3])
+    */
+    console.log(arr)
+    console.log(newArr)
+
+    console.log('以下是方法二')
+    // 方法2.先排序，如果前一个和后一个一样，随便干掉一个
+    arr.sort(function(a,b){
+      return a-b
+    })
+    console.log(arr)
+    for(var i = 0;i<arr.length;i++){
+      if(arr[i]===arr[i+1]){
+        arr.splice(i,1)
+        i--
+      }
+    }
+    console.log(arr)
+
+    
+  </script>
 </body>
 </html>
