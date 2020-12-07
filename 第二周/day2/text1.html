@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var str = 'sdasHHdasdasdasHHdasdadaasHHdad'
+    // 只能换一次
+    // var res = str.replace('HH','**')
+    // str = res
+    // res = str.replace('HH','**')
+    // str = res
+    // console.log(str)
+
+    // 以循环方式来进行替换
+    // 使用while循环
+    while(str.indexOf('HH')!==-1){
+      str = str.replace('HH','**')
+    }
+    console.log(str)
+  </script>
+</body>
+</html>
