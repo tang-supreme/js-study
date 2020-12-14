@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    var num = 255
+
+    var res = num.toString(16)
+
+    console.log(res)
+
+    function fn() {
+      var a = Math.floor(Math.random() * 256).toString(16)
+      var b = Math.floor(Math.random() * 256).toString(16)
+      var c = Math.floor(Math.random() * 256).toString(16)
+
+      return '#' + a + b + c
+    }
+
+    console.log(fn())
+
+  </script>
+</body>
+</html>

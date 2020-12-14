@@ -6,8 +6,33 @@
   <title>Document</title>
 </head>
 <body>
+  <button id="btn">换个颜色</button>
+  <script src="utils.js"></script>
   <script>
-    
+    // 页面的背景颜色发生改变
+
+    //1.怎么操作页面的背景颜色
+    // 获取body =>document.body
+    // 给一个元素添加样式
+    // 元素.style.width = '100px' 
+
+    document.body.style.backgroundColor = 'rgb(123,222,234)'
+    btn.onclick=function(){
+      var r = fn(0,255)
+      var g = fn(0,255)
+      var b = fn(0,255)
+      var str = 'rgb('+r+','+g+','+b+')'
+      document.body.style.backgroundColor = str
+    }
+
+    // 定时器
+    setInterval(function(){
+      var r = fn(0,255)
+      var g = fn(0,255)
+      var b = fn(0,255)
+      var str = 'rgb('+r+','+g+','+b+')'
+      document.body.style.backgroundColor = str
+    },1000)
   </script>
 </body>
 </html>

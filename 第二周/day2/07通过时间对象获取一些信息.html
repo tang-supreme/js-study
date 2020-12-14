@@ -6,6 +6,63 @@
   <title>Document</title>
 </head>
 <body>
-  <script></script>
+  <script>
+    // 获取时间对象中的数据
+    var time = new Date()
+    console.log(time)
+    // 有一些方法是用来在事件对象中获取一些信息的
+    // 只有时间对象可以调用
+
+    // 1.getFullYear()获取时间对象里面的年份
+    // 语法：时间对象.getFullYear()
+    // 返回值：该时间对象中的年份信息 number数据类型
+    var year = time.getFullYear()
+    console.log(year)
+
+    // 2.getMonth()获取时间对象里面的月份
+    // 返回值：该事件对象中的月份信息
+    // 0表示1月 ，11表示12月
+    var month = time.getMonth()
+    console.log(month)
+
+    // 3.getDate()获取时间对象里的日期
+    // 返回值：该对象中的日期信息
+    var date = time.getDate()
+    console.log(date)
+
+    // 4.getHours()获取时间对象里面的小时
+    // 返回值：该对象中的小时信息
+    var hours = time.getHours()
+    console.log(hours)
+
+    // 5.getMinutes()获取时间对象里的分钟
+    // 返回值：改时间对象中的分钟信息
+    var minutes = time.getMinutes()
+    console.log(minutes)
+
+    // 6.getSeconds()获取时间对象里的秒钟
+    // 返回值：该事件对象的秒针信息
+    var seconds = time.getSeconds()
+    console.log(seconds)
+
+    // 7.getDay()获取时间对象里面现在一周中的第几天
+    // 返回值：该时间对象中的时间在一周中的第几天
+    // 0表示周日 ，6表示周六
+    var day = time.getDay()
+    console.log(day)
+
+    // 8.getTime()获取一个时间戳
+    // 返回值：改时间的时间戳
+    var ms = time.getTime()
+    console.log(ms)
+
+    /*
+    时间戳
+      格林威治时间 1970年1月1日00：00：00
+      语言中时间的起点
+      时间对象到 格林威治时间的毫秒数
+      我们管这个毫秒数字叫做当前时间的时间戳
+    */
+  </script>
 </body>
 </html>
