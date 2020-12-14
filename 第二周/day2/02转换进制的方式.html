@@ -7,7 +7,30 @@
 </head>
 <body>
   <script>
-    
+    // 把数字转换为进制
+
+    // 1.toString()
+    //  把一个十进制的数字转换成你需要的进制
+    //  返回值：是一个转换好进制的数字，但是是一个 字符串
+    // var num = 100
+    // console.log(num.toString(2))
+    // console.log(num.toString(8))
+    // console.log(num.toString(16))
+    // console.log(num.toString(10))
+
+    // 2.parseInt()
+    //  语法：parseInt(一个数字，你把前面的这个数字当作几进制来看待)
+    //  返回值：都是十进制数字，是一个number数据类型
+    // var res = parseInt(1100100,2) //把1100100这个数字当作二进制数字
+    // console.log(res)
+
+    // 数字保留小数的方法
+    // 1.toFixed()把一个数字保留多少位小数
+    //  语法：数字.toFixed(你要保留几位小数)
+    //  返回值：保留好小数的字符串
+    var n = 1.23456789
+    var res = n.toFixed(3)
+    console.log(res)
   </script>
 </body>
 </html>
