@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
-    
+    // 区间范围的随机数字
+
+    /*
+      0-10之间的随机数字
+      Math.random()   0-0.999
+      Math.random()*10   0-9.999
+
+      10-20之间的随机数
+      Math.random()*10 + 10   10-19.9999
+
+      30-60之间的随机数字
+      Math.random()*30 + 30   
+
+      区间范围的随机数
+      Math.random() * （大数-小数） + 小数
+    */
+
+    // var res = Math.random() * 10 + 10
+    // console.log(res)
+
+    /*
+    一个范围之间的随机整数
+      1.四舍五入
+      Math.round(Math.random()*10)+10
+
+      **前后的概率较小
+
+      2.向下取整
+      Math.random()*11  0-10.99999
+      Math.random()*11+10   10-20.9999
+      Math.floor(Math.random()*(大数-小数+1))+小数
+    */
+    // var res = Math.round(Math.random() * 10) + 10
+    // var res = Math.floor(Math.random() * 11) + 10
+    // console.log(res)
+
+
+    // 测试概率
+    var arr = []
+    for (var i = 0; i < 1000000; i++) {
+      // arr.push(Math.floor(Math.random() * (20 - 10 + 1)) + 10)
+      arr.push(Math.round(Math.random() * 10) + 10)
+    }
+    // console.log(arr)
+    var obj = {}
+    for (j = 0; j < arr.length; j++) {
+      if (obj[arr[j]]) {
+        obj[arr[j]]++
+      } else {
+        obj[arr[j]] = 1
+      }
+    }
+    console.log(obj)
+
+
+    // 干嘛用的 生成一个区间范围内的随机整数
+    function fn(a, b) {
+      // 先拿到一个最大值，在拿到一个最小值
+      var min = Math.min(a,b)
+      var max = Math.max(a,b)
+      var res = Math.floor(Math.random() * (max - min + 1)) + min
+      return res
+    }
+    console.log(fn(30,20))
   </script>
 </body>
+
 </html>

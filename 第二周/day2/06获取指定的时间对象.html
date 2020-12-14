@@ -7,7 +7,40 @@
 </head>
 <body>
   <script>
+    // 获取指定时间对象
+    // 在new Date() 的时候传递参数就可以了
+
+    // 1.传递数字，至少传递两个
+    //   第一个数字表示年份，第二个数字表示月份
+    //   表示月份的时候，0表示1月，11表示12月
+    //   剩下的参数 你没有传递就是默认值
+    // var time = new Date(2018,0)
+    // console.log(time)
+
+    // 2.传递数字，传递三个数字
+    // 第三个数字参数表示日 1表示1号 ， 31表示31号
+    // var time = new Date(2018,0,23)
+    // console.log(time)
+
+    // 3.传递数字，传递四个数字
+    // 第四个参数表示小数，二十四小时制度的
+    // var time = new Date(2018,0,1,23)
+    // console.log(time)
+
+    // 4.传递五个数字
+    // 第五个数字表示分钟0-59
+    // var time = new Date(2018,0,1,22,23)
+    // console.log(time)
     
+    // 5.传递六个数字
+    // 第六个参数表示的是秒0-59
+    // var time = new Date(1996,8,4,10,16,55)
+    // console.log(time)
+
+    // 6.传递一个字符串
+    // 写字符串的时候 1表示一月 12就表示12月
+    var time = new Date('1996-10-16 11:22:33')
+    console.log(time)
   </script>
 </body>
 </html>
