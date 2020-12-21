@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
-    
+    // 计算时间差
+    /*
+      时间对象不能减法
+
+      第一个时间对象的时间戳 - 第二个时间对象的时间戳
+      得到的是两个时间对象之间相差的毫秒数
+    */
+    var time1 = new Date()
+    var time2 = new Date(2020, 11, 1, 21, 00, 00)
+    function subTime(t1, t2) {
+      var str = ''
+
+      //  1.让两个时间对象的时间戳相减,相差多少秒
+      var t = parseInt(Math.abs(t1.getTime() - t2.getTime()) / 1000)
+
+      // 2.算多少天  1天是60*60*24
+      var day = parseInt(t / 60 / 60 / 24)
+
+      // 3.算多少小时
+      // day*60*60*24 四天有多少秒
+      // t-day*60*60*24除了整天数以外的秒
+      var subDay = t - day * 60 * 60 * 24
+      var hours = parseInt(subDay / 60 / 60)
+      console.log(hours)
+
+      // 4.算多少分钟
+      // hours*60*60 有多少秒
+      // subDay-hours*60*60除了整天整小时以外的分钟
+      var subMinute = subDay - hours * 60 * 60
+      var minutes = parseInt(subMinute / 60)
+
+      // 5.算多少秒钟
+      var seconds = t % 60
+
+      str+=day+'天'
+      str+=hours+'小时'
+      str+=minutes+'分钟'
+      str+=seconds+'秒'
+
+      return str
+    }
+
+    var res = subTime(time1, time2)
+    console.log(res)
   </script>
 </body>
+
 </html>
