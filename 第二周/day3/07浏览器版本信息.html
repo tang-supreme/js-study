@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 获取浏览器版本信息
+    // window 下有一个对象叫做 navigator
+    // 存储着的都是浏览器的相关信息
+
+    // 1. userAgent 是个属性
+    //    只读属性
+    //    获取的浏览器的版本信息
+    var userAgent = window.navigator.userAgent
+    console.log(userAgent)
+    console.log('=============')
+
+    // 2. appName
+    //    只读属性
+    //    各大浏览器厂商为了致敬 网景 把所有的 appName 都写成了 Netscape
+    console.log(window.navigator.appName)
+    console.log('=============')
+
+    // 3. appVersion
+    //    只读属性
+    //    浏览器的版本号
+    console.log(window.navigator.appVersion)
+    console.log('=============')
+
+    // 4. platform
+    //    只读属性
+    //    获取你的操作系统
+    console.log(window.navigator.platform)
+  </script>
+</body>
+</html>

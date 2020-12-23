@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = function(){
+      // 这个函数会在页面所有资源加载完毕以后执行
+      console.log(btn)
+    }
+  </script>
+  <style>
+    body{
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">1</button>
+  <script>
+    // 浏览器给我们提供了一些事件
+    // 1.onload事件
+    //  会在所有资源加载完毕后执行
+    //  window.onload = function(){}
+
+    // 2.onscroll 事件
+    //  会在浏览器滚动的时候触发
+    window.onscroll = function(){
+      console.log('滚动了')
+    }
+
+    // 3.onresize事件
+    //  会在浏览器尺寸改变的时候触发
+    window.onresize = function(){
+      console.log('浏览器尺寸改变了')
+    }
+  </script>
+</body>
+</html>

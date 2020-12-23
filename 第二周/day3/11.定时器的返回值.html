@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 定时器的返回值
+    //   定时器的返回值，不分 timeout 还是 interval
+    //   只是你是当前这个页面中的第几个定时器
+    //   不会重复，会一直增加下去
+    //   这个值有什么作用？就是用来关闭定时器使用的
+
+    var res2 = setInterval(function () {
+      console.log('间隔定时器')
+    }, 1000)
+
+    var res = setTimeout(function () {
+      console.log('炸弹定时器')
+    }, 1000)
+
+    var res3 = setInterval(function () {
+      console.log('间隔定时器2')
+    }, 1000)
+
+    console.log(res)
+    console.log(res2)
+    console.log(res3)
+
+
+  </script>
+</body>
+</html>
