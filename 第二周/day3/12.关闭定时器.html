@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">关闭定时器</button>
+  <script>
+    // 关闭定时器
+    // 依靠的就是定时器的返回值来进行关闭
+
+    // 1.clearTimeout()
+    // 2.clearInterval()
+
+    // 语法是一样的
+    // 1.clearTimeout(第几个定时器)
+    // 2.clearInterval(第几个定时器)
+
+    // 关闭以后定时器不会再继续执行
+    // 关闭定时器的方法可以混用
+    
+    var timerId = setTimeout(function () {
+      console.log('我是炸弹定时器')
+    }, 3000)
+
+    var timerId2 = setInterval(function () {
+      console.log('我是间隔定时器')
+    }, 1000)
+
+    btn.onclick = function(){
+      // 关闭定时器
+      // clearTimeout(timerId)
+      // clearInterval(timerId2)
+      clearInterval(timerId)
+      // clearTimeout(timerId2)
+    }
+  </script>
+</body>
+</html>

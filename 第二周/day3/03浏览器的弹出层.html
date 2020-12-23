@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 浏览器的弹出层
+    // 统一的特点，会把程序阻断
+    //    弹出层这一行的代码没有执行完，后面的代码都不会执行
+    //    只能输出字符串
+    //    如果是其他数据类型会自动转换成字符串输出
+
+    // 1.alert()
+    //  提示一些信息，只是一个确定按钮，没有返回值
+    alert('我是浏览器弹出层')
+
+    // 2.confirm()
+    //  接受一个参数，参数就是提示用户的信息
+    //  是有返回值的，由用户点击的按钮决定
+    //  点击 确定，得到的就是true
+    //  点击 取消，得到的就是false
+    var res = confirm('是否跳转？')
+    console.log(res)
+
+    // 3.prompt()
+    //  接受一个参数，参数就是提示用户的信息
+    //  有一个确定一个取消按钮
+    //  点击确定，得到输入的内容
+    // 点击取消，得到null
+    var res2 = prompt('请输入年龄')
+    console.log(res2)
+  </script>
+</body>
+</html>
