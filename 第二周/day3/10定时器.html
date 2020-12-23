@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 定时器
+    // js提供给我们的一个延时或者定时执行函数的方式
+
+    // 定时器分为两种
+    // 1.延时定时器/炸弹定时器/倒计时定时器 setTimeout()
+    // 2.间隔定时器 setIntelval()
+
+    // 语法一样
+    // 1.setTimeout(function(){})
+    // 2.setInterval(function(){})
+
+    // 1.炸弹定时器
+    // 在多少毫秒以后执行以下函数，只会执行一次
+    setTimeout(function(){
+      // 在1000ms以后执行，只会执行一次
+      console.log('炸弹')
+    },1000)
+
+    // 2.间隔定时器
+    // 每个多少毫秒执行一次函数，只要不关闭，会一直 执行
+    setInterval(function(){
+      // 每隔1秒会执行一次，直到你关闭定时器为止
+      console.log('间隔定时器')
+    },1000)
+  </script>
+</body>
+</html>

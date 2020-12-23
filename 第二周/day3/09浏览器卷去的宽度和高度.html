@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+
+    button {
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+  <button id="goTop">回到顶部</button>
+  <script>
+    // 浏览器卷去的宽度和高度
+    // 我们的页面里面
+    //  document.documentElement 表示html
+    //  document.body 表示body
+
+    // document.documentElement.scrollTop
+    // document.body.scrollTop
+    // 区别：在于浏览器，doctype标签
+    //    不同浏览器表现形式不一样
+    //    为了解决这个不一样的情况，有一个兼容的写法
+    // var top = document.documentElement.scrollTop || document.body.scrollTop
+
+    // scrollTop
+    window.onscroll = function(){
+      var top = document.documentElement.scrollTop || document.body.scrollTop
+      console.log(top)
+    }
+    goTop.onclick = function(){
+      setInterval(function(){
+        document.documentElement.scrollTop -= 20
+      },30)
+    }
+
+
+  </script>
+</body>
+</html>

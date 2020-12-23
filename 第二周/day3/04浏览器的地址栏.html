@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">登录</button>
+  <button id="btn2">刷新</button>
+  <script>
+    // window下有一个对象叫做location
+    // 存储着地址栏相关的信息
+    console.log(location)
+
+    // location 里面有很多的属性和方法
+
+    // 1.href属性
+    //  是一个读写的属性
+    //  可以用作获取，也可以给他赋值
+    // 获取的就是当前页面的地址栏地址
+    var h = location.href
+    console.log(h)
+    // 赋值就是把一个地址赋值给location的href属性
+    // 直接跳转页面
+    // location.href = 'https://www.baidu.com'
+    btn.onclick = function(){
+      location.href = 'https://www.baidu.com'
+    }
+
+    // 2.reload()是一个方法，重新加载页面
+    //  这个方法不能直接写在全局
+    btn2.onclick = function(){
+      location.reload()
+    }
+  </script>
+</body>
+</html>
