@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // js 标准代码是按照从上向下的顺序执行
+    // 这个行为我们叫做同步执行
+
+    // 定时器是一个异步执行代码的机制
+    // 当代码执行遇到定时器的时候
+    //    会把定时器中的那个函数放在异步队列池里面
+    //    当你写定时器的时候，会先执行定时器外面的所有代码
+    //    只有当定时器外面的所有代码执行完毕之后才会执行定时器里面的代码
+
+    console.log('start')
+    // 定时器的时间计时是从所有的同步代码执行完毕之后开始计时的
+    setTimeout(function(){
+      console.log('定时器执行了')
+    },1000)
+
+    // 我的同步代码没有结束的时候
+    // 那么异步队列池就不会开始计时
+    while(true){
+
+    }
+    console.log('end')
+  </script>
+</body>
+</html>
