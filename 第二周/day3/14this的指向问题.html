@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // this 和函数的定义没有关系
+    // 和函数的调用方式有关系
+
+    /*
+      1.全局调用函数名（） this=>window
+      2.对象调用 对象.函数名（） this => 点前面是谁就是谁
+      3.定时器处理函数 写在定时器的第一个参数就是函数 this => window
+    */
+
+    function fn(){
+      console.log(this)
+    }
+
+    var obj = {
+      fun:function(){
+      console.log(this)
+      }
+    }
+    obj.fun()
+
+    setInterval(obj.fun,1000)
+  </script>
+</body>
+</html>

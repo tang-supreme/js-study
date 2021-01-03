@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" class="box">我是第一个div</div>
+  <div class="box">我是第二个</div>
+  <div class="box">我是第三个</div>
+  <div>我是第四个</div>
+
+  <p class="box">1</p>
+  <p class="box">2</p>
+  <p class="box">3</p>
+  <p class="box">4</p>
+  <p class="box">5</p>
+  <p class="box">6</p>
+  <p class="box">7</p>
+  <p class="box">8</p>
+  <p class="box">9</p>
+  <p class="box">10</p>
+
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+  <input type="text" name="abc">
+
+  <script>
+    // id可以直接在js里面使用
+    // 但这个方式是一个非常规的操作
+    // 开发中不被接受的
+    console.log(box)
+
+    /*
+      常规
+        当你想操作页面中的某一个元素的时候
+        应该先使用一下dom的方法获取到这个元素
+        然后在进行操作
+    */
+
+
+
+    // 用 DOM 的方式获取页面中的元素
+
+    // 1.特殊标签html
+    // document.documentElement 专门用来获取html标签
+    var html = document.documentElement
+    console.log(html)
+
+    // 2.特殊标签head
+    // document.head 专门用来获取head标签
+    var head = document.head
+    console.log(head)
+
+    // 3.特殊标签body
+    // document.body 专门用来获取body标签
+    var body = document.body
+    console.log(body)
+    console.log('=============================')
+
+    // 4.getElementById()
+    // 通过元素id属性来获取元素，获取到的只能是一个元素
+    var box = document.getElementById('box')
+    // 如果页面中有这个元素，那么获取到的就是这个元素
+    // 如果页面中没有这个元素，那么得到的就是null
+    console.log(box)
+    console.log('=============================')
+
+    // 5.getElementsByClassName()
+    // 通过元素的class名称来获取元素，获取到的有可能是多个元素
+    //    **不管获取到多少个，返回的是一个伪书组，这个伪数组里面有获取到的所有元素，
+    //      哪怕只找到一个满足条件的元素，也是放在伪数组里面返回的
+    var ps = document.getElementsByClassName('box')
+    console.log(ps)
+    console.log('=============================')
+
+    // 6.getElementsByTagName()
+    // 是通过元素的标签名来获取元素的，获取到的有可能是多个元素，以伪数组的形式返回
+    var p1 = document.getElementsByTagName('p')
+    console.log(p1)
+    console.log('=============================')
+
+    // 7.getElementsByName()
+    // 通过元素的name属性来进行获取，获取到的有可能是多个元素，以伪数组的形式返回
+    var ns = document.getElementsByName('abc')
+    console.log(ns)
+    console.log('=============================')
+
+    // 8.querySelector()
+    // 按照你书写css的时候的方式进行获取
+    // 只能获取到一个元素
+    // 就是满足你选择器的第一个元素
+    var box2 = document.querySelector('div')
+    console.log(box2)
+    console.log('=============================')
+
+    // 9.querySelectorAll()
+    // 按照你书写css的时候的方式进行获取
+    // 能获取到所有满足条件的元素
+    // 以伪书组的形式返回
+    var boxs = document.querySelectorAll('div')
+    //    只要有，哪怕只有一个，也是放在伪数组里面返回的
+    //    如果没有，就是一个空的伪数组
+    console.log(boxs)
+
+    boxs.forEach(function(item){
+      console.log(item)
+    })
+  </script>
+</body>
+</html>

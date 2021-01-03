@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box1 box2 box3 box4" style="height: 100px;" gender="男">
+    <p>hello</p>
+  </div>
+
+
+  <script>
+    // 操作元素的某些属性
+    var box = document.querySelector('div')
+
+    // 1.innerHTML
+    // 是一个读写的属性
+    // 语法：元素.innerHTML
+    // 读：获取该元素内部的所有html结构
+    // 写：完全覆盖式的把该元素内部的html结构替换
+    var html = box.innerHTML
+    box.innerHTML = '<span>我是新来的一个标签<span>'
+
+    // 2.innerText
+    // 是一个读写的属性
+    // 语法：元素.innerText
+    // 读：获取该元素内部的文本内容
+    // 写：完全覆盖式的把该元素内部的所有内容替换成文本
+    var text = box.innerText
+    box.innerText = '<span>我是新来的一个标签<span>'
+    
+    // 3.style
+    // 是一个对象，获取元素所有的行内样式（获取不了非行内样式），而是对style这个对象的成员进行增删改查
+    var height = box.style.height
+    console.log(height)
+    // style这个东西的所有设置都是设置成行内样式
+    // box.style,height = '300px'
+    // box.style.display = 'none'
+
+    // 4.className
+    // 是一个读写的属性
+    // 语法：元素.className
+    // 是用来对元素的类名进行操作的
+    // 读：读取元素的类名
+    // 写：完全覆盖式的汲取新的类名
+    var c = box.className
+    console.log(c)
+    box.className = 'box5'
+
+    // 5.getAttribute(你要获取的属性名称)
+    // 是一个方法
+    // 专门用来获取元素的属性的（可以获取所有的属性）
+    var gender = box.getAttribute('gender')
+    console.log(gender)
+
+    // 6.getAttribute(你要设置的属性名称，你要设置的属性值)
+    // 是一个方法
+    // 专门给元素设置属性使用的
+    box.setAttribute('age',24)
+    var age = box.getAttribute('age')
+    console.log(age)
+
+    // 7.removeAttribute(你要删除的属性名)
+    // 是一个方法
+    // 用来给元素删除的某些属性使用的
+    box.removeAttribute('gender')
+    box.removeAttribute('style')
+    box.removeAttribute('class')
+    box.removeAttribute('age')
+  </script>
+</body>
+
+</html>
