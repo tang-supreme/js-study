@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      height: 2000px;
+    }
+
+    div#topBox{
+      width: 100%;
+      height: 40px;
+      background-color: skyblue;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: white;
+
+      position: fixed;
+      left: 0;
+      top: 0;
+      
+      display: none;
+    }
+
+    div#goTop{
+      width: 30px;
+      height: 30px;
+      background-color: pink;
+
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+
+      display: none;
+
+    }
+  </style>
+</head>
+<body>
+  <div id="topBox">我是顶部的通栏</div>
+  <div id="goTop"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // 要一个滚动事件
+    window.onscroll = function(){
+      var top = document.documentElement.scrollTop || document.body.scrollTop
+      if(top>=300){
+        topBox.style.display = 'flex'
+        goTop.style.display = 'block'
+      }else{
+        topBox.style.display = 'none'
+        goTop.style.display = 'none'
+      }
+    }
+
+    goTop.onclick = function(){
+      var timer = setInterval(function(){
+        console.log('正在向上')
+        var top = document.documentElement.scrollTop || document.body.scrollTop
+        document.documentElement.scrollTop -=20
+        if(top<=0){
+          clearInterval(timer)
+        }
+      },1000)
+    }
+
+    var arr = [
+      {
+        name:'jack',
+        age:18,
+        gender:'男'
+      },
+      {
+        name:'rose',
+        age:20,
+        gender:'女'
+      },
+      {
+        name:'tom',
+        age:22,
+        gender:'男'
+      },
+    ]
+    var tBody = document.querySelector('tbody')
+    tBody.innerHTML = '<tr><td>jack</td><td>18</td><td>男</td></tr>'
+  </script>
+</body>
+</html>
