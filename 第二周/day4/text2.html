@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th class="a">姓名</th>
+        <th class="b">年龄</th>
+        <th>性别</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    // 先准备一个数据
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rose',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+    // 1.先获取tbody标签
+    var tBody = document.querySelector('tbody')
+    bindHtml()
+    function bindHtml(){
+      var str = ''
+      for(var i = 0;i<arr.length;i++){
+        str+='<tr>'
+        var item = arr[i]
+        for(var attr in item){
+          str+='<td>'
+          str+=item[attr]
+          str+='</td>'
+        }
+        str+='<td class="del">删除</td>'
+        str+='</tr>'
+      }
+      tBody.innerHTML = str
+      bingEvent()
+    }
+
+    function bingEvent(){
+      var dels = document.querySelectorAll('.del')
+      for(var j = 0;j<dels.length;j++){
+        console.log(dels[j])
+        dels[j].setAttribute('index',j)
+        dels[j].onclick = function(){
+          console.log(this)
+          var index = this.getAttribute('index')-0
+          arr.splice(index,1)
+          bindHtml()
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>
