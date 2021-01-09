@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box" id="box" gender="男" name="Jack" age="18">
+    <p>hello</p>
+    <span>我是span标签</span>
+    <p>world</p>
+  </div>
+
+  <script>
+    var box = document.querySelector('div')
+    var span = document.querySelector('span')
+    // 获取节点的方式
+
+    // 之前的
+    // 1.获取元素节点getElement**()
+    // 2.获取到的都是属性getAttribute()
+    // 3.获取文本节点innerText
+
+    // 新的获取节点 的方式
+
+    // 1.childNodes 获取一个元素下的所有子节点
+    var childAll = box.childNodes
+    console.log(childAll)
+
+    // 2.children 获取一个元素下所有元素节点
+    var childEle = box.children
+    console.log(childEle)
+
+    // 3.firstChild 获取一个元素下第一个子节点
+    var first = box.firstChild
+    console.log(first)
+
+    // 4.firstElementChild 获取一个元素下的第一个元素子节点
+    var firstEle = box.firstElementChild
+    console.log(firstEle)
+
+    // 5.lastChild 获取一个元素下的最后一个节点
+    var last = box.lastChild
+    console.log(last)
+
+    // 6.lastElementChild 获取一个元素下的最后一个元素子节点
+    var lastEle = box.lastElementChild
+    console.log(lastEle)
+
+    // 7.previousSibling 上一个哥哥节点
+    var prev = span.previousSibling
+    console.log(prev)
+
+    // 8.previousElementSibling 上一个哥哥元素
+    var prevEle = span.previousElementSibling
+    console.log(prevEle)
+
+    // 9.nextSibling 下一个弟弟节点
+    var next = span.nextSibling
+    console.log(next)
+
+    // 10.nextElementSibling 下一个弟弟元素
+    var nextEle = span.nextElementSibling
+    console.log(nextEle)
+
+    // 11.parentNode 获取一个元素的父节点
+    var par = span.parentNode
+    console.log(par)
+
+    // 12.attributes 获取一个元素的所有属性节点
+    var attrs = box.attributes
+    console.log(attrs)
+  </script>
+</body>
+</html>

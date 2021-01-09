@@ -44,15 +44,22 @@
     var tBody = document.querySelector('tbody')
     // 2.准备一个空字符串
     var str = ''
-
+    
+    // 3，遍历数组
+    // 数组中有多少个成员，那么就有多少个tr
     for(var i=0;i<arr.length;i++){
       str+='<tr>'
+      
+      // 这里进行一些操作
+      // 这里的arr[i]就是数组中的每一个对象
+      // 根据对象中的成员来添加td
       var item = arr[i]
       for(var attr in item){
         str+='<td>'
         str+=item[attr]
         str+='</td>'
       }
+      
       str+='</tr>'
     }
     tBody.innerHTML = str
