@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
 <body>
-  <table>
+  <table cellspacing="0">
     <thead>
       <tr>
         <th>姓名</th>
@@ -20,9 +18,7 @@
 
     </tbody>
   </table>
-
   <script>
-    // 先准备一个数据
     var arr = [
       {
         name: 'Jack',
@@ -40,32 +36,21 @@
         gender: '男'
       }
     ]
-    // 1.先获取tbody标签
-    var tBody = document.querySelector('tbody')
-    // 2.准备一个空字符串
-    var str = ''
-    
-    // 3，遍历数组
-    // 数组中有多少个成员，那么就有多少个tr
-    for(var i=0;i<arr.length;i++){
-      str+='<tr>'
-      
-      // 这里进行一些操作
-      // 这里的arr[i]就是数组中的每一个对象
-      // 根据对象中的成员来添加td
-      var item = arr[i]
-      for(var attr in item){
-        str+='<td>'
-        str+=item[attr]
-        str+='</td>'
+    var tbody = document.querySelector('tbody')
+    for(var i = 0;i<arr.length;i++){
+      var tr = document.createElement('tr')
+      if(i%2===0){
+        tr.style.backgroundColor = 'pink'
+      }else{
+        tr.style.backgroundColor = 'red'
       }
-      
-      str+='</tr>'
+      for(var attr in arr[i]){
+        var td = document.createElement('td')
+        td.innerHTML = arr[i][attr]
+        tr.appendChild(td)
+      }
+      tbody.appendChild(tr)
     }
-    tBody.innerHTML = str
-    
   </script>
-
 </body>
-
 </html>

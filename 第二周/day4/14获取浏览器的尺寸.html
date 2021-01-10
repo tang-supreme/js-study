@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // 获取浏览器尺寸 DOM 级别
+
+    var height_bom = window.innerHeight
+    console.log('BOM: ' + height_bom)
+
+    var width_bom = window.innerWidth
+    console.log('BOM: ' + width_bom)
+
+    // 不包含滚动条的宽度和高度
+    // 获取窗口高度 document.documentElement.clientHeight
+    var height_dom = document.documentElement.clientHeight
+    console.log('DOM: ' + height_dom)
+
+    // 获取窗口宽度 document.docuemntElement.clientWidth
+    var width_dom = document.documentElement.clientWidth
+    console.log('DOM: ' + width_dom)
+
+    var width_body = document.body.clientWidth
+    var height_body = document.body.clientHeight
+    console.log(width_body)
+    console.log(height_body)
+
+    // 在获取浏览器的宽度的时候
+    // 人家会这么写
+    // var width = document.docuemntElement.clientWidth || document.body.clientWidth
+    // 是因为人家的 css 和我们不一样 
+  </script>
+</body>
+</html>

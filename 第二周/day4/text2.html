@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <table>
     <thead>
@@ -42,32 +44,55 @@
     // 1.先获取tbody标签
     var tBody = document.querySelector('tbody')
     bindHtml()
-    function bindHtml(){
+    function bindHtml() {
+
+      // 2.准备一个空字符串
       var str = ''
-      for(var i = 0;i<arr.length;i++){
-        str+='<tr>'
+
+      // 3.遍历数组
+      // 数组中有多少个成员，那么就有多少个tr
+      for (var i = 0; i < arr.length; i++) {
+        str += '<tr>'
+
+        // 这里进行一些操作
         var item = arr[i]
-        for(var attr in item){
-          str+='<td>'
-          str+=item[attr]
-          str+='</td>'
+        for (var attr in item) {
+          str += '<td>'
+          str += item[attr]
+          str += '</td>'
         }
-        str+='<td class="del">删除</td>'
-        str+='</tr>'
+        str += '<td class="del">删除</td>'
+        str += '</tr>'
       }
+      // 渲染页面页数
       tBody.innerHTML = str
       bingEvent()
     }
 
-    function bingEvent(){
+
+
+    // 这个函数每次绑定完毕页面都要执行一次
+    function bingEvent() {
+      // 获取所有的删除按钮
       var dels = document.querySelectorAll('.del')
-      for(var j = 0;j<dels.length;j++){
+
+      // dels获取的是一个伪数组
+      // 可以使用for循环进行遍历
+      for (var j = 0; j < dels.length; j++) {
+        // dels[j]就是每一个标签元素
         console.log(dels[j])
-        dels[j].setAttribute('index',j)
-        dels[j].onclick = function(){
+
+        // 添加一个自定义属性
+        dels[j].setAttribute('index', j)
+
+        // 给每一个标签上绑定一个事件
+        dels[j].onclick = function () {
+          // 我点哪个删除按钮，this就是哪一个删除按钮
           console.log(this)
-          var index = this.getAttribute('index')-0
-          arr.splice(index,1)
+          var index = this.getAttribute('index') - 0
+          // 删除数组的第index个
+          arr.splice(index, 1)
+          // 现在数组里面只剩下两个对象
           bindHtml()
         }
       }
@@ -75,4 +100,5 @@
 
   </script>
 </body>
+
 </html>
