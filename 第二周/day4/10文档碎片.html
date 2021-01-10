@@ -6,6 +6,66 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  <script>
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rose',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+
+    var tbody = document.querySelector('tbody')
+
+    // 文档碎片
+    // 是一个筐
+    // 可以被当作一个元素使用
+    // tr丢到筐里面
+    // 一次性把筐丢到tbody里面
+    // 这个筐是不在页面显示的,你在丢的时候,筐是留下的
+    // 语法:document.creatDocumentFragment()
+    // 返回值:就是一个筐
+
+    var box = document.createDocumentFragment()
+
+    for(var i = 0;i<arr.length;i++){
+      var tr = document.createElement('tr')
+      if(i%2===0){
+        tr.style.backgroundColor = 'skyblue'
+      }else{
+        tr.style.backgroundColor = 'pink'
+      }
+      for(var attr in arr[i]){
+        var td = document.createElement('td')
+        td.innerHTML = arr[i][attr]
+        tr.appendChild(td)
+      }
+      box.appendChild(tr)
+    }
+    console.log(box)
+    tbody.appendChild(box)
+  </script>
 </body>
 </html>
