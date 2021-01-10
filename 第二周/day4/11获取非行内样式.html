@@ -4,8 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div{
+      height: 100px;
+      background-color: pink;
+    }
+
+    div::before{
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: skyblue;
+    }
+  </style>
 </head>
 <body>
-  
+  <div style="width: 100px;"></div>
+  <script>
+    // 1.获取元素
+    var box = document.getElementsByTagName('div')[0]
+
+    // style 可以获取样式,也可以设置样式
+    // style 只能获取行内样式
+    console.log(box.style.width)
+    console.log(box.style.height) //获取不到
+
+
+
+    // 获取元素非行内样式
+    // 1.getComputedStyle 标准浏览器
+    // 2.currentStyle  IE低版本
+    
+    // 1.getComputedStyle
+    // 语法:window.getComputedStyle(你要获取的元素,第二个参数选填)
+    // 返回值:是一个对象,里面包括该元素的所有样本信息
+    // 想拿到一个属性的值
+    var styles = window.getComputedStyle(box)
+    console.log(styles.height)
+    console.log(styles.width)
+
+    // 一般用来获取元素的非行内样式,但是获取不了伪元素的样式
+    // 需要用到第二个参数了
+    var stylese = window.getComputedStyle(box,'before') 
+    console.log(stylese.height)
+
+
+    // 2.currentStyle
+    // IE低版本使用(是一个属性)
+    // 语法:元素.currentStyle
+    // 得到的是一个对象,里面包含元素的所有的可设置属性
+    // 没有办法获取伪元素
+    var styless = box.currentStyle
+    console.log(styless.width)
+  </script>
 </body>
 </html>
