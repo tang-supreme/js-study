@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">1
+    2<!-- 我是一个注释 -->
+    <p>hello world</p>
+  </div>
+
+  <script>
+    // 区分节点的方法
+    var box = document.querySelector('.box')
+    // 获取几个节点
+    // 1.元素节点
+    var ele = box.firstElementChild
+    // 2.属性节点
+    var attr = box.attributes[0]
+    // 3.文本节点
+    var text = box.firstChild
+    // 4.获取一个注释节点
+    var comment = box.childNodes[1]
+
+    // 节点操作上有一些统一的属性来根据不同的节点给出不同的值
+    // 1.nodeType 使用一个数字来表示节点类型
+    console.log(ele.nodeType)
+    console.log(attr.nodeType)
+    console.log(text.nodeType)
+    console.log(comment.nodeType)
+
+    // 2.nodeName 每一个节点的节点名称（元素节点是大写标签名）
+    console.log(ele.nodeName)
+    console.log(attr.nodeName)
+    console.log(text.nodeName)
+    console.log(comment.nodeName)
+
+    // 3.nodeValue 每一个节点的节点名称（元素节点是大写标签名）
+    console.log(ele.nodeValue)
+    console.log(attr.nodeValue)
+    console.log(text.nodeValue)
+    console.log(comment.nodeValue)
+
+    console.log('==============================')
+    console.log(ele)
+    console.log(attr)
+    console.log(text)
+    console.log(comment)
+  </script>
+</body>
+</html>

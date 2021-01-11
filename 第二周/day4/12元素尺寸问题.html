@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+      border: 10px solid #333;
+      margin: 20px;
+      background-color: pink;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div>
+
+  </div>
+  <script>
+    // 获取元素的尺寸
+    var box = document.querySelector('div')
+
+    // clientWidth 和clientHeight
+    // 获取到的是元素边框以内的区域(内容+padding)
+    // 不管和模型是什么模式,都是边框以内的区域
+    var height = box.clientHeight
+    console.log(height)
+    var width = box.clientWidth
+    console.log(width)
+
+    /*
+      clientWidth 和clientHeight
+        获取到的都是元素边框以内的尺寸(内容+padding)
+        不管盒模型是什么模式,都是边框以内的内容
+    */
+  </script>
+</body>
+</html>

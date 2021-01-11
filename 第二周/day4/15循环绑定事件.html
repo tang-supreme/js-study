@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p{
+      width: 30px;
+      height: 30px;
+      background-color: pink;
+      margin: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+  </div>
+
+  <script>
+    var ps = document.querySelectorAll('p')
+    for(var i = 0;i<ps.length;i++){
+      ps[i].onclick = function(){
+        console.log(this)
+      }
+    }
+  </script>
+</body>
+</html>

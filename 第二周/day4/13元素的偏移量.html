@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      border: 10px solid #333;
+      margin-left: 50px;
+      /* position: relative; */
+    }
+
+    p{
+      width: 100px;
+      height: 100px;
+      background-color:skyblue;
+      border: 10px solid red;
+      margin-left: 20px;
+      margin-top: 10px;
+      padding: 5px;
+      /* position: absolute;
+      left: 300px;
+      top: 300px; */
+
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p></p>
+  </div>
+  <script>
+    // 元素的偏移量
+    var div = document.querySelector('div')
+    var p = document.querySelector('p')
+
+    // offsetLeft 和offsetTop
+    // 1.定位情况下，offsetLeft是距离定位父级的左边框内部开始计算的距离
+    // 2.没有定位的时候，根据页面的最左边来计算的尺寸
+    console.log(p.offsetLeft)
+    console.log(p.offsetTop)
+    console.log(div.offsetLeft)
+    console.log(div.offsetTop)
+    /*
+      没有定位父级的情况下，就是根据页面左上角来计算距离
+      有定位父级的情况，根据定位父级的左上角（边框以内）开始计算距离
+    */
+
+    // offsetWidth 和 offsetHeight
+    // 1.offsetHeight得到的是元素的内容+apdding+border
+    // 不管元素的盒模型是什么模式，都是内容+padding+border
+    console.log(p.offsetHeight)
+    console.log(p.offsetWidth)
+    console.log(div.offsetHeight)
+    console.log(div.offsetWidth)
+
+
+    /*
+      offsetWidth 和 offsetHeight
+      都是获取元素内容+padding+border区域的尺寸
+      都是不管盒模型是什么状态都是内容+padding+border
+    */
+  </script>
+</body>
+</html>
