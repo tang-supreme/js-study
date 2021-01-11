@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    我是一个提前准备好的 div
+    <span>我是一个span标签</span>
+  </div>
+
+  <script>
+    var box = document.querySelector('.box')
+    var span = document.querySelector('span')
+
+    var p = document.createElement('p')
+    p.innerHTML = '我是新P'
+    console.log(p)
+
+    // 1.appendChild() 添加子节点
+    // 这个方法必须要传递一个节点作为参数，不能说字符串
+    // 放在父元素的末尾
+    box.appendChild(p)
+
+    // 2.insertBefore()插入到某一个元素之前
+    // 语法：父元素.inserBefore(你要插入的元素，哪个元素的前面)
+    box.insertBefore(p,span)
+  </script>
+</body>
+</html>
