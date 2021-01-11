@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    我是一个提前准备好的div
+  </div>
+
+  <script>
+    var box = document.querySelector('.box')
+    // 对节点操作，就是增删改查
+    // c:create
+    // r:read
+    // u:update
+    // d:delete
+
+    // 字符串的形式 <p>文字</p>
+    // p.innerHTML || p.innerText
+
+    // 1.createElement 创造一个元素节点
+    var p = document.createElement('p')
+    p.innerHTML='1233'
+    console.log(p)
+
+    // 2.createTextNode 创建一个文本节点
+    var text = document.createTextNode('我是新创建的文本')
+    cons.log(text)
+  </script>
+</body>
+</html>

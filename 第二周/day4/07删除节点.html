@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    我是一个提前准备好的 div
+    <span>我是一个span标签</span>
+  </div>
+
+  <script>
+    var box = document.querySelector('.box')
+    var span = document.querySelector('span')
+
+    // 1.removeChild()
+    // 语法：父元素.removeChild(你要移除的节点)
+    box.removeChild(span)
+    
+
+
+  </script>
+</body>
+</html>

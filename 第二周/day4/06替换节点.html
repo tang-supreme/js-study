@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    我是一个提前准备好的 div
+    <span>我是一个span标签</span>
+  </div>
+  
+  <script>
+    var box = document.querySelector('.box')
+    var span = document.querySelector('span')
+
+
+    var p = document.createElement('p')
+    p.innerHTML = '我是新创建出来的p标签'
+
+    // 1.replaceChild()
+    // 语法：父元素.replaceChild(新节点，旧节点)
+    box.replaceChild(p,span)
+  </script>
+</body>
+</html>
