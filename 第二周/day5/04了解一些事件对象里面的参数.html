@@ -4,8 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      width: 2000px;
+      height: 300px;
+    }
+    div{
+      width: 300px;
+      height: 300px;
+      border: 10px solid #333;
+      padding: 20px;
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
-  
+  <div></div>
+  <script>
+    var box = document.querySelector('div')
+    box.onclick = function(e){
+      e = e || window.event
+
+      var offsetX = e.offsetX
+      var offsetY = e.offsetY
+      console.log('offsetX : ' + offsetX)
+      console.log('offsetY : ' + offsetY)
+      console.log('=====================')
+
+      var cilentX = e.clientX
+      var cilentY = e.clientY
+      console.log('clientX : ' +cilentX)
+      console.log('clientY : ' +cilentY)
+      console.log('=====================')
+
+      var pageX = e.pageX
+      var pageY = e.pageY
+      console.log('pageX : ' +pageX)
+      console.log('pageY : ' +pageY)
+      console.log('=====================')
+    }
+
+    /*
+    offsetX 和 offsetY根据你点击的哪个元素的左上角（边框内测）来确定的坐标点
+
+    cilentX 和 clientY 根据你可视窗口的左上角来确定的坐标点
+
+    pageX 和 pageY 根据你整个文档流的左上角来确定的坐标点
+
+    clientWidth offsetLeft
+    只要是XY这样的属性
+      都是表示坐标信息
+      都是在事件对象中获取
+    只要是width height left top
+      都是表示元素或者window的尺寸
+      都是依靠元素来获取或者window获取
+    */
+  </script>
 </body>
 </html>

@@ -6,6 +6,19 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div>
+    X轴的坐标点：0<br>
+    Y轴的坐标点：0
+  </div>
+  <script>
+    var box = document.querySelector('div')
+    document.onmousemove = function(e){
+      e = e || window.event
+      var x = e.pageX
+      var y = e.pageY
+      console.log(x,y)
+      box.innerHTML = 'X轴坐标点：' + x + ' <br> Y轴坐标点：' + y
+    }
+  </script>
 </body>
 </html>

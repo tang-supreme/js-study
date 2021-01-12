@@ -6,6 +6,21 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <script>
+    var ps = document.querySelectorAll('p')
+    ps.forEach(function(item){
+      console.log(item)
+      item.onclick = function(){
+        // 当前这个元素里面的文本
+        // this就是当前元素
+        console.log(this.innerText)
+      }
+    })
+  </script>
 </body>
 </html>

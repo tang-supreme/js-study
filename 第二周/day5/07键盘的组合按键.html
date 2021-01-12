@@ -6,6 +6,25 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      在事件对象里面有三个东西
+        altkey
+        ctrlkey
+        shiftkey
+        表示在你按下某一个按钮的时候，是否有同事按下shift 或者 ctrl 和alt 建
+    */
+
+    document.onkeydown = function(e){
+      e = e||window.event
+      var code = e.keyCode || e.which
+      // 判断组合按键的时候，多判断一个ctrlKey 或者 shiftKey 或者 altKey
+
+      if(e.altKey && code ===65){
+        console.log('你按下的是alt+a')
+      }
+      console.log(e)
+    }
+  </script>
 </body>
 </html>

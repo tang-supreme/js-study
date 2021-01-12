@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul {
+      width: 100%;
+    }
+
+    ul>li {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      float: left;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <button>添加一个li</button>
+  <ul> </ul>
+  <script>
+    var ul = document.querySelector('ul')
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+      // console.log('1')
+      var li = document.createElement('li')
+      li.style.backgroundColor = fn()
+      ul.appendChild(li)
+      // console.log('2')
+    }
+    function fn() {
+      // console.log(3)
+      var r = Math.floor(Math.random() * 256)
+      var g = Math.floor(Math.random() * 256)
+      var b = Math.floor(Math.random() * 256)
+      var str = 'rgb(' + r + ',' + g + ',' + b + ')'
+      return str
+    }
+  </script>
 </body>
+
 </html>
