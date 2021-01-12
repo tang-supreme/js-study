@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>我是一个盒子</div>
+  <script>
+    // 事件对象
+    // 浏览器提供给我们的用来描述当前这个事件杯粗发的时候的一些信息
+
+    /*
+      事件对象 window.event
+      用来在事件里面获取事件信息的一个对象
+
+      以前
+        window.event是IE专用
+        在标准浏览器是不适用的
+        直接在事件处理函数中接受一个形参event
+          会在触发事件的时候浏览器自动帮我们传递
+      保持一个传统，在获取事件对象的时候写成兼容的形式
+    */
+    var div = document.querySelector('div')
+    div.onclick = function(event){
+      event = event || window.event
+      console.log(event)
+    }
+  </script>
+</body>
+</html>

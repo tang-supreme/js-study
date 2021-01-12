@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  洗、、
+  <div></div>
+  <script>
+    var div =document.querySelector('div')
+
+    // parentElement 获取父元素
+    // parentNode 获取父节点
+
+    // 因为我们的文字不能作为父节点使用
+    // 一般来说能作为父节点的都是元素
+
+    // html是我们页面中最大的元素节点
+    // html是我们的根元素
+
+    // document 是我们页面中的根节点
+    console.log(div.parentNode.parentNode.parentNode)
+    console.log(div.parentNode.parentNode.parentElement)
+  </script>
+</body>
+</html>
