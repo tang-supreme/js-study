@@ -4,8 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 300px;
+      height: 200px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      background-color: pink;
+    }
+  </style>
 </head>
 <body>
-  
+  <div>
+    <button>关闭</button>
+  </div>
+  <script>
+    var box = document.querySelector('div')
+    var btn = document.querySelector('button')
+    btn.onclick = function(){
+      box.style.display = 'none'
+      setTimeout(function(){
+        box.style.display = 'block'
+      },1000)
+    }
+  </script>
 </body>
 </html>

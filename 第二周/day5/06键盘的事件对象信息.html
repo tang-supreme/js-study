@@ -6,6 +6,32 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <input type="text">
+  <script>
+    // 键盘事件一般不绑定子啊盒子元素上
+    // 一般键盘事件绑定在表单元或者document上
+    var inp = document.querySelector('input')
+    inp.onkeyup = function(e){
+      e = e||window.event
+      // 在键盘事件里面有一个键盘编码
+      // 编码叫做 e.keycode(只是在firefox20以前的版本不能用)
+      // firefox20以前的版本使用e.which
+      // 通常也写成兼容的方式
+      var code = e.keyCode || e.which
+
+      /*
+      常用：
+        左上右下
+        37 38 39 40 
+        回车 13
+        shift 16
+        ctrl 17
+        alt 18
+
+        空格 32
+      */
+      console.log(code)
+    }
+  </script>
 </body>
 </html>
