@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>我是盒子</div>
+  <script>
+    // 事件
+
+    // 在js里面事件指的是行为
+
+    /*
+      事件有三大要素
+        1.事件源=》谁身上的事件
+        2.事件类型=》什么事件
+        3.事件处理函数=》当该行为触发的时候，做什么事情
+
+      dom 0级事件
+        div.onclick = function(){}
+        div 事件源（谁身上的事件）
+        click 事件类型
+        function(){}事件处理函数
+
+
+    */
+    var div =document.querySelector('div')
+    div.onclick = function(){
+      console.log('........')
+    }
+  </script>
+</body>
+</html>
