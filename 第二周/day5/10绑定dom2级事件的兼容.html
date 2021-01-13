@@ -4,8 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+    }
+  </style>
 </head>
 <body>
-  
+  <button>移除div身上的事件</button>
+  <div></div>
+  <script src="./utils.js"></script>
+  <script>
+    var div = document.getElementsByTagName('div')[0]
+    var btn = document.getElementsByTagName('button')[0]
+
+    // 绑定事件
+    on(div,'click',handler1)
+    function handler1(){
+      console.log('1')
+    }
+
+    on(div,'click',handler2)
+    function handler2(){
+      console.log('2')
+    }
+
+    on(btn,'click',function(){
+      off(div,'click',handler1)
+    })
+  </script>
 </body>
 </html>

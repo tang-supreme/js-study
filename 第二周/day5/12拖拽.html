@@ -4,8 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
 </head>
 <body>
-  
+  <div></div>
+  <script>
+    var box = document.querySelector('div')
+
+    // 屏幕宽高
+    var window_width = document.documentElement.clientWidth
+    var window_height = document.documentElement.clientHeight
+
+    // 获取盒子的宽度
+    var box_width = box.offsetWidth
+    var box_height = box.offsetHeight
+
+    function moveHandler(e){
+      e = e || window.event
+      var x = e.clientX - 100
+      var y = e.clientY - 100
+      // console.log(x,y)
+
+      // 判断左上出界
+      if(x<=0){
+        x=0
+      }
+      if(y<=0){
+        y=0
+      }
+
+      // 判断右边出界
+      if(x>=window_width - box_width){
+        x = window_width-box_width
+      }
+      // 判断下边出界
+      if(y>=window_height - box_height){
+        y = window_height-box_height
+      }
+
+      this.style.left = x+'px'
+      this.style.top = y+'px'
+    }
+
+    // 事件
+    box.addEventListener('mousedown',function(){
+      box.addEventListener('mousemove',moveHandler)
+    })
+
+    box.addEventListener('mouseup',function(){
+      box.removeEventListener('mousemove',moveHandler)
+    })
+  </script>
 </body>
 </html>
