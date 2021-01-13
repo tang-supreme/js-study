@@ -4,8 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color:pink;
+    }
+  </style>
 </head>
 <body>
-  
+  <button>我要取消div元素身上的事件</button>
+  <div></div>
+  <script>
+    // var div = document.querySelector('div')
+    // var button = document.querySelector('button')
+
+    /*
+      在标准浏览器中，移除事件使用
+        元素.removeEventListener（'事件类型'，事件处理函数）
+        找到一个和你传递的函数地址一摸一样的那个事件处理函数移除掉
+
+      在IE低版本中，移除事件的使用
+        元素.detachEvent('事件类型'，事件处理函数)
+    */
+
+    // div.addEventListener('click',divHandler)
+    // function divHandler(){
+    //   console.log('我被点击了')
+    // }
+
+    // div.addEventListener('click',divHandler2)
+    // function divHandler2(){
+    //   console.log('我是第二个点击事件')
+    // }
+
+    // button.addEventListener('click',function(){
+    //   console.log('我想取消点击事件1')
+    //   div.removeEventListener('click',divHandler)
+    // })
+
+
+    // IE
+    var div = document.getElementsByTagName('div')[0]
+    var btn = document.getElementsByTagName('button')[0]
+    function divHandler() {
+      console.log('我被点击了')
+    }
+    function divHandler2() {
+      console.log('我是第二个事件')
+    }
+
+    div.attachEvent('onclick', divHandler)
+    div.attachEvent('onclick', divHandler2)
+
+    btn.attachEvent('onclick', function () {
+      console.log('移出 div 身上的某一个事件')
+
+      div.detachEvent('onclick', divHandler)
+    })
+  </script>
 </body>
 </html>
