@@ -21,6 +21,52 @@
   <script>
     var div = document.getElementsByTagName('div')[0]
     
+    // 1.dom 0级事件 只能绑定一个事件处理函数
+    // div.onclick = function(){
+    //   console.log('我被点击了')
+    // }
+    // div.onclick = function(){
+    //   console.log('我是第二个人事件处理函数')
+    // }
+
+    // 2.dom1级事件 因为不完善，就被废掉了
+
+    // 3.dom2级事件 是一个新的给元素绑定事件的方式
+    //  dom 2级事件
+    //  1.addEventListener 标准浏览器
+    //  2.attachEvent    IE低版本浏览器
+
+    // 语法：元素.addEventListener()
+    //  三个常用参数
+    //  第一个：事件类型（不需要on）
+    //  第二个：事件处理函数
+    // 可以给一个事件类型绑定若干个事件处理函数，当触发的时候就是按照你绑定的顺序去执行函数
+      // div.addEventListener('click',function(event){
+      //   // 事件对象的方式和之前一样
+      //   event = event || window.event
+      //   console.log('我被点击了')
+      // })
+
+      // div.addEventListener('click',function(){
+      //   console.log('二')
+      // })
+
+      // div.addEventListener('click',function(){
+      //   console.log('三')
+      // })
+
+      // 语法：元素.attachEvent()
+      // 两个参数
+      // 第一个参数：事件类型（on+事件类型）
+      // 第二个参数：事件处理函数
+      // 可以给一个事件类型绑定多个事件处理函数，按照你绑定的顺序倒序执行
+      div.attachEvent('onclick',function(){
+        console.log('1')
+      })
+
+      div.attachEvent('onclick',function(){
+        console.log('2')
+      })
   </script>
 </body>
 </html>
