@@ -84,6 +84,35 @@
   </div>
 
   <script>
+    // 选项卡 / tab切换
+    /*
+      ul每一个li都是没有orange背景颜色的
+        li.active 才有orange背景颜色
+      ol每一个li都是隐藏的
+        li.active 才是显示的
+      
+      默认情况下
+        ul 下 第一个 li 有active
+        ol 下 第一个 li 有active
+      当我点击ul下的第一个li的时候
+        应该只有ul下的第一个有active，ol下的第一个有active
+      当我点击ul下的第二个 li的时候
+        应该只有ul下的第二个有active，ol下的第二个有active
+    */
+
+    /*
+      1.获取元素
+        ul>li要点击
+        ol》li要操作它们的类名
+      2.循环绑定事件
+        ul>li 都要点击事件
+      3.先让选项切换好
+        把每一个li的类名都变成 ''
+        只单独给自己加类名
+      4.让下面ol里面的每一个li和我配套
+        把每一个li的类名都变成 ''
+        让和ul下面配套的哪一个ol下的li给一个active
+    */
     var btns = document.querySelectorAll('ul>li')
     var tabs = document.querySelectorAll('ol>li')
     btns.forEach(function(item){

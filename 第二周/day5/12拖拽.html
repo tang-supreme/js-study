@@ -27,6 +27,27 @@
 <body>
   <div></div>
   <script>
+    /*
+      1.获取元素
+       获取div
+      2.准备事件
+       要一个 按下事件 mousedown
+       要一个 移动事件 mousemove
+       要一个 抬起事件 mouseup
+       移动事件要在 按下以后注册
+       移动事件要在 抬起以后取消
+      3.移动的业务逻辑
+       随着移动随时获取坐标点
+          offsetX 不能用，因为是根据元素来的位置
+          clientX 和 pageX 都可以使用
+        获取到坐标点以后，给left和top赋值
+      4.边界值判断
+       先判断坐上
+          左上就是 0 0 
+       判断右下
+          先获取屏幕宽度
+
+    */
     var box = document.querySelector('div')
 
     // 屏幕宽高
@@ -60,6 +81,8 @@
         y = window_height-box_height
       }
 
+      // 这里的this是谁
+      // 从新给left和top这两个属性赋值
       this.style.left = x+'px'
       this.style.top = y+'px'
     }
