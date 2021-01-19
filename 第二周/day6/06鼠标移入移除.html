@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box1{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+    }
+    .box2{
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      
+      position: absolute;
+      top: 100px;
+      left: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">
+    <div class="box2"></div>
+  </div>
+
+  <script>
+    var box1 = document.querySelector('.box1')
+    var box2 = document.querySelector('.box2')
+
+    box2.addEventListener('mouseenter', function (e) {
+      console.log('box2 鼠标移入 enter')
+    })
+
+    box2.addEventListener('mouseleave', function (e) {
+      console.log('box2 鼠标移出 leave')
+    })
+
+    box1.addEventListener('mouseenter', function () {
+      console.log('box1 鼠标移入 enter')
+    })
+
+    box1.addEventListener('mouseleave', function () {
+      console.log('box1 鼠标移出 leave')
+    })
+
+    // box2.addEventListener('mouseover', function (e) {
+    //   console.log('box2 鼠标移入 over')
+    // })
+
+    // box2.addEventListener('mouseout', function (e) {
+    //   console.log('box2 鼠标移出 out')
+    // })
+
+    // box1.addEventListener('mouseover', function () {
+    //   console.log('box1 鼠标移入 over')
+    // })
+
+    // box1.addEventListener('mouseout', function () {
+    //   console.log('box1 鼠标移出 out')
+    // })
+  </script>
+</body>
+</html>
