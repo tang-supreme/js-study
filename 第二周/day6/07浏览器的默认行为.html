@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>1234567890123456789012345678901234567890</div>
+
+  <script>
+    /*
+      浏览器的默认行为
+        也就是不需要我们手动绑定事件
+        浏览器自动给某些东西添加的事件
+
+      比如：
+        a 标签，自己就带有点击跳转的功能
+        submit 标签，自动就带有表单提交的功能
+        鼠标右键单击，会展示一个菜单
+
+      能取消默认行为
+        + 选中事件 selectstart
+        + 几个方法
+          1. e.returnValue = false   IE 低版本使用
+          2. e.preventDefault()      标准浏览器
+          3. return false            通用方法（任何浏览器都好使，不是所有的默认事件都好使）
+    */
+
+    document.onselectstart = function (e) {
+      e = e || window.event
+      // e.preventDefault()
+
+      // e.returnValue = false
+
+      return false
+
+      console.log('你要选中我的文字')
+    }
+  </script>
+</body>
+</html>

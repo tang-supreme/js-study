@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      margin: 30px auto;
+    }
+
+    .box2 {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .box1, .box2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box1">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+
+  <script>
+    var box1 = document.getElementsByTagName('div')[0]
+    var box2 = document.getElementsByTagName('div')[1]
+    var box3 = document.getElementsByTagName('div')[2]
+
+    box1.onclick = function(){
+      console.log('我是box1')
+    }
+
+    box2.onclick = function(e){
+      e = e || window.event
+      e.stopPropagation()
+      console.log('我是box2')
+    }
+
+    box3.onclick = function(e){
+      e = e || window.event
+      // e.cancelBubble = true
+      // console.log(e)
+      // e.stopPropagation()
+      console.log('我是box3')
+    }
+    /*
+      能向上出发是因为什么
+
+      只要我能让事件不传播了
+        我就只触发自己的事件了
+
+      一个IE发明的
+        e.cancelBubble = false
+        e.cancelBubble = true 取消事件冒泡
+      一个是后来大家发明的
+        e.stopPropagation() 取消事件传播
+
+      取消事件传播
+        是指我不在向上传播
+        而不是我的子级不向我传播
+    */
+  </script>
+</body>
+</html>
