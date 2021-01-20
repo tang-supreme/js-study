@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul,li{
+      list-style: none;
+    }
+    ul{
+      width: 600px;
+      height: 600px;
+      margin: 0 auto;
+      background-color: skyblue;
+      overflow: hidden;
+    }
+    li{
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button>添加一个li</button>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <script>
+    // var lis = document.querySelectorAll('li')
+    // lis.forEach(function(item){
+    //   item.addEventListener('click',function(){
+    //     console.log(this.innerText)
+    //   })
+    // })
+
+    /*
+      通过冒泡的行为来做这个事情
+        因为li是ul的结构子级
+        事情是会传播的
+        如果我给ul绑定了一个点击事件
+        点击每一个li的时候都会触发
+      我不知道你点击的到底是ul自己本身还是li
+        + 在事件对象里面有一个成员
+        + 叫做e.target(标准浏览器)  || e.srcElement (IE 7 8)
+        + 就是你在触发事件的时候，准确触发行为的那个元素（目标）
+        + 写一个兼容的方式
+    */
+
+    var ul = document.getElementsByTagName('ul')[0]
+
+
+    // ul.addEventListener('click',function(e){
+    //   e = e || window.event
+    //   console.log(e)
+    //   console.log('ul我被电击了')
+    // })
+
+    ul.onclick = function(e){
+      e = e || window.event
+      var target = e.target || e.srcElement
+      console.log(e)      
+      // 判断，如果target是LI
+      // 证明我点击在LI身上了
+      // 否则就是没有点击在LI身上
+      if(target.tagName === 'LI'){
+        console.log(target.innerText)
+        console.log('我点击在li身上')
+      }
+    }
+  </script>
+</body>
+</html>

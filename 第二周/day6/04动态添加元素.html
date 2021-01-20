@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul,li{
+      list-style: none;
+    }
+    ul{
+      width: 600px;
+      height: 600px;
+      margin: 0 auto;
+      background-color: skyblue;
+      overflow: hidden;
+    }
+    li{
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin: 10px;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <button>添加一个li</button>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <script>
+    var btn = document.querySelector('button')
+    var ul = document.querySelector('ul')
+    var lis = document.querySelectorAll('li')
+
+    // // 1.循环绑定事件
+    // lis.forEach(function(item){
+    //   // 只给五个元素绑定了事件
+    //   item.addEventListener('click',function(){
+    //     console.log(this.innerText)
+    //   })
+    // })
+
+
+    
+
+    // 2.事件委托的方式
+    ul.addEventListener('click', function(e){
+      e = e || window.event
+      var target = e.target || e.srcElement
+      // 判断点击的是li
+      if(target.tagName === 'LI'){
+        console.log(target.innerText)
+      }
+    })
+
+    // 按钮添加
+    btn.addEventListener('click',function(){
+      var li = document.createElement('li')
+      li.innerText = '新来的li'
+      ul.appendChild(li)
+    })
+
+
+  </script>
+</body>
+</html>
