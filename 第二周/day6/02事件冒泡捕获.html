@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      margin: 30px auto;
+    }
+
+    .box2 {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .box1, .box2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box1">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+
+  <script>
+    var box1 = document.getElementsByTagName('div')[0]
+    var box2 = document.getElementsByTagName('div')[1]
+    var box3 = document.getElementsByTagName('div')[2]
+
+    box1.addEventListener('click', function () { console.log('我被点击了， 我是 box1') }, true)
+    box2.addEventListener('click', function (e) {
+      e = e || window.event
+      console.log(e)
+      console.log('我被点击了， 我是 box2')
+    }, true)
+    box3.addEventListener('click', function (e) {
+      e = e || window.event
+      console.log(e)
+      console.log('我被点击了， 我是 box3')
+    }, true)
+    document.body.addEventListener('click', function () { console.log('我被点击了， 我是 body') }, true)
+    document.documentElement.addEventListener('click', function () { console.log('我被点击了， 我是 html') }, true)
+    document.addEventListener('click', function () { console.log('我被点击了， 我是 document') }, true)
+    window.addEventListener('click', function () { console.log('我被点击了， 我是 window') }, true)
+
+    /*
+      事件的目标
+        + 你准确点击的那个元素（你准确的触发行为的元素）
+      事件的冒泡去
+        + 在事件的传播过程中，先执行 目标元素 身上的事件
+        + 然后逐层向上传播，去依次触发结构父级身上的同类型事件，直到 window
+      事件的捕获
+        + 在事件的传播过程中，先执行 window 身上的同类型事件
+        + 然后逐层向下传播，去依次执行目标元素结构父级身上的同类型事件，直到 目标元素
+
+      addEventListener 可以接受第三个参数
+        第三个参数： 就是你是按照冒泡的顺序执行还是按照捕获的顺序执行（布尔值）
+          + 这个值在接受 false 或者不传递的时候，是按照 冒泡 的顺序来执行的
+          + 这个值在接受 true 的时候，是按照 捕获 的顺序来执行的
+
+      在事件对象里面有一个叫做 path 的属性
+        + 记录的就是这个目标元素的事件传播路径
+    */
+
+  </script>
+</body>
+</html>
