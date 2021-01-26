@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      width: 300px;
+      height: 1000px;
+      background-color: skyblue;
+    }
+
+    li {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button>添加一个 li</button>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+    /*
+      事件委托
+        1. 循环绑定事件
+          => 给每一个 li 绑定一个点击事件
+        2. 事件委托
+          => 把所有 li 身上需要绑定的事件绑定给一个共同的结构父级
+          => 绑定给 ul
+          => 事件目标: 准确触发事件的元素
+            -> 如果你点击在了 ul 身上, target 就是 ul
+            -> 如果你点击在了 li 身上, target 就是 li
+          => 通过事件目标来判断你点击的确实是 li
+            -> if () {}
+            -> 元素节点.nodeName : 大写标签名
+
+      需求: 有一个 button 按钮, 点击的时候会添加一个 li 进入到 ul
+    */
+
+    // 0. btn 的事件
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+      // 插入节点的方式
+      // var li = document.createElement('li')
+      // li.innerText = '新来的'
+      // ul.appendChild(li)
+
+      // innerHTML
+      // 完全覆盖式的写入
+      ul.innerHTML = ul.innerHTML + '<li>新来的</li>'
+    }
+
+    // 1. 获取所有 li
+    var lis = document.querySelectorAll('li')
+    var ul = document.querySelector('ul')
+
+    // 2-1. 循环绑定事件
+    // lis.forEach(function (item) {
+    //   item.onclick = function () { console.log(item) }
+    // })
+
+    // 2-2. 事件委托
+    ul.onclick = function (e) {
+      e = e || window.event
+      var target = e.target || e.srcElement
+
+      // target 就是你点击的那个元素
+      if (target.nodeName === 'LI') {
+        console.log('你点击的是 li', target)
+      }
+    }
+  </script>
+</body>
+</html>
