@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .content,
+    .content1 {
+      width: 300px;
+      height: 300px;
+      line-height: 300px;
+      text-align: center;
+      font-size: 30px;
+      border: 1px solid #333;
+      margin: 300px 20px;
+      position: relative;
+
+      overflow: hidden;
+      float: left;
+    }
+
+    .mask,
+    .mask1 {
+      width: 300px;
+      height: 300px;
+      background-color: rgba(193, 241, 97, 0.5);
+      position: absolute;
+      left: 0;
+      top: -100%;
+
+      /* 闭包遮罩层影响 content */
+      pointer-events: none;
+    }
+
+    p.x {
+      width: 1px;
+      height: 600px;
+      background-color: red;
+      position: absolute;
+      left: 451px;
+      top: 100px;
+    }
+
+    p.y {
+      width: 600px;
+      height: 1px;
+      background-color: red;
+      position: absolute;
+      left: 100px;
+      top: 451px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <audio src="" controls></audio> -->
+
+  <div class="content">
+    盒子内部显示的内容
+    <!-- 遮罩层 -->
+    <div class="mask"></div>
+  </div>
+
+  <div class="content1">
+    盒子内部显示的内容
+    <!-- 遮罩层 -->
+    <div class="mask1"></div>
+  </div>
+
+  <!-- <p class="x"></p>
+  <p class="y"></p> -->
+
+  <script>
+    /*
+      判断移入角度
+
+      0. 布局
+        => 显示内容
+        => 遮罩层
+      1. 获取元素
+        1-1. .content: 判断进入角度
+        1-2. .mask: 瞬间定位, 移动
+      2. 绑定事件
+        2-1. mouseover
+          -> 获取坐标:
+          -> 相对于屏幕确定的坐标原点
+          -> 根据坐标原点拿到一个坐标系里面得位置
+          -> 我要就要使用 client 一套
+        2-2. 确定坐标原点
+          -> 元素的 offsetLeft + 元素宽度的一半
+        2-4. 根据坐标计算进入的角度
+          -> JS 拿不到角度, 只能拿到一个弧度
+          -> Math.atan2(y, x) 弧度
+          -> 1度 = 1弧度 * (180 / PI)
+          -> 得到的角度是 0 ~ 90 ~ 180 ~ -90 ~ 0
+          -> 为了方便判断, 我们计算一下
+            => 给每一个角度 + 180
+        2-5. 瞬间定位 msak 盒子
+          -> 根据不同的进入角度, 来定位到不同的位置
+        2-6. 移入到 content 里面
+          -> left 0, top 0
+          -> 直接设置
+          -> 因为代码执行会把 dom 操作要快
+          -> 定时器: 设置一个 10ms
+          -> 延后执行以下进来
+        2-7. 问题:
+          -> 下一次移入的时候会有问题
+          -> 第一次你移入的时候, 设置了一个 transition
+          -> 第二次移入的时候, 应该是瞬间定位, 但是你又 transition
+          -> 在每次准备瞬间定位之前, 把 transition 干掉
+        2-8. mouseout 事件
+          -> 刚才的一摸一样来一套
+
+    */
+
+    // 1. 获取元素
+    var content = document.querySelector('.content')
+    var content1 = document.querySelector('.content1')
+    var mask = document.querySelector('.mask')
+    var mask1 = document.querySelector('.mask1')
+
+    // 2. 绑定事件
+    // 2-1. 鼠标移入事件
+    content.addEventListener('mouseover', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 2-2. 确定坐标原点
+      var originX = content.offsetLeft + content.offsetWidth / 2
+      var originY = content.offsetTop + content.offsetHeight / 2
+
+      // 2-3. 获取根据坐标原点来的坐标
+      var mouseX = e.clientX - originX
+      var mouseY = e.clientY - originY
+
+      // 2-4. 计算角度
+      var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+      // 2-4. 为了方便判断, 计算一下
+      var degNum = Math.round((deg + 180) / 90) % 4
+      // 0 : 左边
+      // 1 : 上边
+      // 2 : 右边
+      // 3 : 下边
+
+      // 2-7. 每次瞬间定位之前, 把 transiton 干掉
+      mask.style.transition = 'none'
+
+      // 2-5. 根据进入角度定位 mask 盒子
+      switch (degNum) {
+        case 0:
+          mask.style.left = '-100%'
+          mask.style.top = 0
+          break
+        case 1:
+          mask.style.left = 0
+          mask.style.top = '-100%'
+          break
+        case 2:
+          mask.style.left = '100%'
+          mask.style.top = 0
+          break
+        case 3:
+          mask.style.left = 0
+          mask.style.top = '100%'
+          break
+      }
+
+      // 2-6. 让 mask 盒子移入
+      setTimeout(function () {
+        mask.style.transition = 'all .3s linear'
+        mask.style.left = 0
+        mask.style.top = 0
+      }, 16)
+    })
+
+    // 2-8. 鼠标移出事件
+    content.addEventListener('mouseout', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 获取根据坐标原点来的坐标
+      var originX = content.offsetLeft + content.offsetWidth / 2
+      var originY = content.offsetTop + content.offsetHeight / 2
+
+      // 获取根据坐标原点来的坐标
+      var mouseX = e.clientX - originX
+      var mouseY = e.clientY - originY
+
+      // 计算角度
+      var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+      // 为了方便判断, 计算一下
+      var degNum = Math.round((deg + 180) / 90) % 4
+
+      // 判断移出的角度来决定 content 的位置
+      switch (degNum) {
+        case 0:
+          mask.style.left = '-100%'
+          mask.style.top = 0
+          break
+        case 1:
+          mask.style.left = 0
+          mask.style.top = '-100%'
+          break
+        case 2:
+          mask.style.left = '100%'
+          mask.style.top = 0
+          break
+        case 3:
+          mask.style.left = 0
+          mask.style.top = '100%'
+          break
+      }
+    })
+
+
+
+
+
+
+    content1.addEventListener('mouseover', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 2-2. 确定坐标原点
+      var originX = content1.offsetLeft + content1.offsetWidth / 2
+      var originY = content1.offsetTop + content1.offsetHeight / 2
+
+      // 2-3. 获取根据坐标原点来的坐标
+      var mouseX = e.clientX - originX
+      var mouseY = e.clientY - originY
+
+      // 2-4. 计算角度
+      var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+      // 2-4. 为了方便判断, 计算一下
+      var degNum = Math.round((deg + 180) / 90) % 4
+      // 0 : 左边
+      // 1 : 上边
+      // 2 : 右边
+      // 3 : 下边
+
+      // 2-7. 每次瞬间定位之前, 把 transiton 干掉
+      mask1.style.transition = 'none'
+
+      // 2-5. 根据进入角度定位 mask1 盒子
+      switch (degNum) {
+        case 0:
+          mask1.style.left = '-100%'
+          mask1.style.top = 0
+          break
+        case 1:
+          mask1.style.left = 0
+          mask1.style.top = '-100%'
+          break
+        case 2:
+          mask1.style.left = '100%'
+          mask1.style.top = 0
+          break
+        case 3:
+          mask1.style.left = 0
+          mask1.style.top = '100%'
+          break
+      }
+
+      // 2-6. 让 mask1 盒子移入
+      setTimeout(function () {
+        mask1.style.transition = 'all .3s linear'
+        mask1.style.left = 0
+        mask1.style.top = 0
+      }, 16)
+    })
+
+    // 2-8. 鼠标移出事件
+    content1.addEventListener('mouseout', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 获取根据坐标原点来的坐标
+      var originX = content1.offsetLeft + content1.offsetWidth / 2
+      var originY = content1.offsetTop + content1.offsetHeight / 2
+
+      // 获取根据坐标原点来的坐标
+      var mouseX = e.clientX - originX
+      var mouseY = e.clientY - originY
+
+      // 计算角度
+      var deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+      // 为了方便判断, 计算一下
+      var degNum = Math.round((deg + 180) / 90) % 4
+
+      // 判断移出的角度来决定 content 的位置
+      switch (degNum) {
+        case 0:
+          mask1.style.left = '-100%'
+          mask1.style.top = 0
+          break
+        case 1:
+          mask1.style.left = 0
+          mask1.style.top = '-100%'
+          break
+        case 2:
+          mask1.style.left = '100%'
+          mask1.style.top = 0
+          break
+        case 3:
+          mask1.style.left = 0
+          mask1.style.top = '100%'
+          break
+      }
+    })
+  </script>
+</body>
+</html>

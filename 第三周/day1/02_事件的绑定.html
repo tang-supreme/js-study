@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box"></div>
+
+  <script>
+    /*
+      事件的绑定
+        1. dom0级 事件
+          + 事件源.onclick = function () {}
+
+        2. dom2级 事件
+          2-1. addEventListener()
+            => 标准浏览器使用
+            => 语法: 事件源.addEventListener('事件类型', 事件处理函数)
+            => 可以同时给一个事件类型绑定多个事件处理函数
+            => 多个事件处理函数的时候, 顺序绑定顺序执行
+            => 至少两个参数
+          2-2. attachEvent()
+            => IE 低版本使用
+            => 语法: 事件源.attachEvent('on事件类型', 事件处理函数)
+            => 可以同时给一个事件类型绑定多个事件处理函数
+            => 多个事件处理函数的时候, 顺序绑定倒叙执行
+            => 只有两个参数
+    */
+
+    // 0. 获取元素
+    var div = document.getElementById('box')
+
+    // 1. dom0级事件
+    // div.onclick = function () { console.log('我被点击了') }
+    // div.onclick = function () { console.log('hello world') }
+
+    // 2. 事件侦听器
+    // 2-1. addEventListener()
+    // div.addEventListener('click', function () {
+    //   console.log('你好 世界')
+    // })
+
+    // div.addEventListener('click', function () {
+    //   console.log('hello world')
+    // })
+
+    // 2-2. attachEvent()
+    // div.attachEvent('onclick', function () {
+    //   console.log('你好 世界')
+    // })
+
+    // div.attachEvent('onclick', function () {
+    //   console.log('hello world')
+    // })
+
+    // div.attachEvent('onclick', function () {
+    //   console.log('我被点击了')
+    // })
+  </script>
+</body>
+</html>

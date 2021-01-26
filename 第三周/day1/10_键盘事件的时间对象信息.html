@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text" id="inp">
+
+  <script>
+    /*
+      键盘事件的事件对象信息
+        1. 按下的是哪一个按键
+          1-1. 事件对象里面有一个 key 的属性
+            => 表示你按下的那个按钮
+            => 特性: IE 低版本不支持
+          1-2. 事件对象里面有一个叫做 keyCode 的属性
+            => 表示你按下的是哪一个按键, 但是是以编码的形式给你
+            => 特性: FireFox < 20 的版本不支持
+            => 在火狐低版本使用 which 属性
+            => 兼容: var code = e.keyCode || e.which
+        2. 你按下的是不是组合按键
+          2-1. altKey
+          2-2. ctrlKey
+          2-3. shiftKey
+          2-4. metaKey
+          + 四个属性的值都是布尔值
+            => altKey 表示 alt 键       options mac
+            => ctrlKey 表示 ctrl 键
+            => shiftKey 表示 shift 键
+            => metaKey 表示 win 键      command mac
+              -> IE 没有不支持
+          + 当你按下一个按键的时候
+            => 如果这四个的某一个的值是 true, 表示你同时也按下了这个按键
+
+    */
+
+    // 0. 获取元素
+    var inp = document.getElementById('inp')
+
+    // 1. 绑定一个键盘按下的事件
+    // inp.addEventListener('keydown', function (e) {
+    //   // 处理事件对象兼容
+    //   e = e || window.event
+
+    //   // 1-1. key 属性
+    //   // console.log(e.key)
+
+    //   // 1-2. keyCode 属性
+    //   // console.log(e.keyCode)
+    //   // console.log(e)
+    //   // if (e.keyCode === 65) {
+    //   //   console.log('你按下的是 a')
+    //   // }
+    // })
+
+    // 2. 组合按键
+    inp.addEventListener('keydown', function (e) {
+      e = e || window.event
+
+      console.log(e)
+
+      // 判断按下的是 shift + a
+      // if (e.shiftKey && e.keyCode === 65) {
+      //   console.log('你按下的是 shift + a')
+      // }
+
+      // 多个一起判断
+      if (e.shiftKey && e.ctrlKey && e.altKey && e.keyCode === 65) {
+        console.log('你按下的是 shift + ctrl + alt + a')
+      }
+    })
+  </script>
+</body>
+</html>

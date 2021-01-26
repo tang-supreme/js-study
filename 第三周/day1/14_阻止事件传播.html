@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .outer {
+      width: 500px;
+      height: 500px;
+      background-color: skyblue;
+    }
+
+    .inner {
+      width: 300px;
+      height: 300px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="outer" id="outer">
+    <div class="inner" id="inner"></div>
+  </div>
+
+  <script>
+    /*
+      阻止事件传播
+        + 因为事件的传播, 会导致我在一个元素上触发行为
+        + 会执行多个元素的事件处理函数
+        + 阻止事件传播
+          1. e.stopPropagation()
+            => 标准浏览器使用
+          2. ecacelBubble = true
+            => IE 低版本使用
+          兼容:
+            方式1: if (e.stopPropagation) { } else { }
+            方式2: try {} catch (e) {}
+    */
+
+    var inner = document.getElementById('inner')
+    var outer = document.getElementById('outer')
+
+    // inner.addEventListener('click', function (e) {
+    //   console.log('inner 的点击事件')
+
+    //   // 阻止事件传播
+    //   // 这个代码一旦执行, 从这个元素开始, 行为不再向上传播了
+    //   e.stopPropagation()
+    // })
+    // outer.addEventListener('click', function () {
+    //   console.log('outer 的点击事件')
+    // })
+
+
+    inner.onclick = function (e) {
+      e = e || window.event
+
+      console.log('inner 的点击事件')
+
+      // 阻止事件传播
+      // e.stopPropagation()
+      // e.cancelBubble = true
+
+      // if (e.stopPropagation) {
+      //   e.stopPropagation()
+      // } else {
+      //   e.cancelBubble = true
+      // }
+
+      try {
+        e.stopPropagation()
+      } catch (err) {
+        e.cancelBubble = true
+      }
+    }
+
+    outer.onclick = function () {
+      console.log('center 的点击事件')
+    }
+
+
+    // try catch 语法
+    // 如果 try 里面的代码没有报错, 那么 catch 不执行
+    // 如果 try 里面的代码报错了, 那么就执行 catch 里面的代码
+    //   => 在 catch 接收的 e 参数表示 try 里面得报错信息
+    // try {
+    //   // console.log('尝试的代码')
+    //   // throw new Error('报个错')
+    //   console.log(abc) // abc is not defined
+    // } catch (err) {
+    //   console.log('备用的代码')
+    //   console.log(err)
+    // }
+  </script>
+</body>
+</html>

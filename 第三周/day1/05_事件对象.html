@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box"></div>
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      事件对象
+        + 当一个事件触发的时候, 对本次事件的描述
+        + 例子: 客服
+          => 当电话响的时候, 接起来, 聊
+          => 在接电话的时候, 需要记录一些信息
+            -> 什么地方打来的
+            -> 说了什么事情
+            -> 需要什么帮助
+            -> 什么时间
+            -> ...
+        + 例子: 鼠标按下行为
+          => 当你在浏览器上触发点击行为的时候, 要执行事件处理函数
+          => 需要一些信息来记录
+            -> 你点击的是哪一个元素
+            -> 你点击的坐标是什么
+            -> 你按下的是哪一个按键
+            -> 你当前触发的事件类型是什么
+        + 例子: 键盘事件
+          => 当你在按下键盘的时候触发
+          => 需要记录一些信息
+            -> 按下的是哪一个按键
+            -> 你按下的是不是组合按键
+
+      如何获取事件对象
+        + 标准浏览器
+          => 直接在事件处理函数上接收一个形参
+          => 会在事件触发的时候, 由浏览器自动传递实参
+        + IE 低版本
+          => 不需要接收形参
+          => 直接使用 window.event
+            -> 在标准浏览器下也可以使用
+            -> 官方给的还是兼容
+        + 书写一个兼容方式
+          => e = e || window.event
+    */
+
+    // 0. 获取元素
+    var div = document.getElementById('box')
+
+    // 1. 绑定事件
+    // div.onclick = function (e) {
+      // 每一次事件触发, 都会获取一个最新的事件对象
+      // 对当前这一次事件的描述
+      // console.log(e)
+      // console.log(window.event)
+    //   e = e || window.event
+    //   console.log(e)
+    // }
+    // div.addEventListener('click', function (e) {
+    //   console.log(e)
+    // })
+    on(div, 'click', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+      console.log(e)
+    })
+
+  </script>
+</body>
+</html>

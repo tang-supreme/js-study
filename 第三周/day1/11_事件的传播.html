@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .outer {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      position: relative;
+      margin: 100px auto;
+    }
+
+    .center {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .inner {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: cyan;
+      position: absolute;
+      left: 400px;
+      top: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="outer">
+    <div class="center">
+      <div class="inner"></div>
+    </div>
+  </div>
+
+  <p class="other"></p>
+
+  <script>
+    /*
+      事件的传播
+        + 当你在一个元素上触发行为的时候
+          => 会按照 结构父级 的顺序向上传播 行为
+          => 直到 window 为止
+        + 问题1:
+          => 当我点击 inner 的时候, 给从 inner 到 window 的所有都绑定一个点击事件
+          => 会不会都触发
+        + 问题2:
+          => 当我点击在 inner 的时候, inner 自己没有事件处理函数
+          => 结构父级上的事件处理函数会不会触发 ?
+        + 问题3:
+          => 当我点击在 outer 的时候, inner 和 center 的事件会不会触发
+        + 问题4:
+          => 当我点击 other 的时候, inner 的事件会不会触发 ? 不会
+          => 当我点击 other 的时候, center 的事件会不会触发 ? 不会
+          => 当我点击 other 的时候, outer 的事件会不会触发 ? 不会
+          => 当我点击 other 的时候, body 的事件会不会触发 ? 会
+        + 问题5:
+          => 当我在 inner 身上触发一个移入事件的时候
+          => 会不会触发 center 的点击事件 ?
+          => 只能触发同类型事件
+        + 定义:
+          => 当事件触发的时候, 会按照结构父级的顺序向上传递同类型事件
+          => 事件对象里面有一个信息叫做 path, 表示当前事件传播的路径
+
+    */
+
+    var other = document.querySelector('.other')
+    other.addEventListener('click', function () { console.log('other 的点击事件') })
+
+    // 1. 绑定点击事件
+    var inner = document.querySelector('.inner')
+    inner.addEventListener('click', function (e) {
+      console.log('inner 的点击事件')
+      console.log(e)
+    })
+    // inner.addEventListener('mouseover', function () { console.log('inner 的移入事件') })
+
+    var center = document.querySelector('.center')
+    center.addEventListener('click', function (e) {
+      console.log('center 的点击事件')
+      console.log(e)
+    })
+    // center.addEventListener('mouseover', function () { console.log('center 的移入事件') })
+
+    var outer = document.querySelector('.outer')
+    outer.addEventListener('click', function () { console.log('outer 的点击事件') })
+
+    document.body.addEventListener('click', function () { console.log('body 的点击事件') })
+
+    document.documentElement.addEventListener('click', function () { console.log('html 的点击事件') })
+
+    document.addEventListener('click', function () { console.log('document 的点击事件') })
+
+    window.addEventListener('click', function () { console.log('window 的点击事件') })
+  </script>
+</body>
+</html>
