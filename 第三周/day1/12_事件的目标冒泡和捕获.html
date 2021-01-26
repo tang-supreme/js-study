@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .outer {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      position: relative;
+      margin: 100px auto;
+    }
+
+    .center {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .inner {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: cyan;
+      position: absolute;
+      left: 400px;
+      top: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="outer">
+    <div class="center" id="center">
+      <div class="inner"></div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      事件的目标冒泡和捕获
+        1. 目标
+          => 准确触发事件的那个元素
+          => 当你给 center 绑定一个点击事件
+            -> 你点击 inner 会触发
+            -> 你点击 center 也会触发
+            -> 两次事件触发的元素是不一样的
+          => 在事件对象里面有一个属性叫做 target
+            -> 表示本次事件触发的时候, 准确触发的元素
+            -> 我们叫做事件目标
+          => 特点: IE 低版本不支持
+            -> IE 低版本使用 srcElement
+          => 处理兼容
+            -> var target = e.target || e.srcElement
+
+        2. 冒泡
+          => 按照 从 目标 到 window 的顺序来执行所有的事件
+
+        3. 捕获
+          => 按照 从 window 到 目标 的顺序来执行所有的事件
+
+        4. addEvenetListener() 的第三个参数
+          -> 默认是 false, 表示冒泡
+          -> 可以选太难 true, 表示捕获
+    */
+
+    // 1. 绑定点击事件
+    // var center = document.getElementById('center')
+    // center.onclick = function (e) {
+    //   e = e || window.event
+    //   // console.log('center 的点击事件')
+    //   // console.log(e.target)
+    //   // console.log(e.srcElement)
+
+    //   var target = e.target || e.srcElement
+    //   console.log(target)
+    // }
+
+
+     // 1. 绑定点击事件
+     var inner = document.querySelector('.inner')
+    inner.addEventListener('click', function (e) {
+      console.log('inner 的点击事件')
+    }, false)
+
+    var center = document.querySelector('.center')
+    center.addEventListener('click', function (e) {
+      console.log('center 的点击事件')
+    }, false)
+
+    var outer = document.querySelector('.outer')
+    outer.addEventListener('click', function () {
+      console.log('outer 的点击事件')
+    }, false)
+
+    document.body.addEventListener('click', function () {
+      console.log('body 的点击事件')
+    }, false)
+
+    document.documentElement.addEventListener('click', function () {
+      console.log('html 的点击事件')
+    }, false)
+
+    document.addEventListener('click', function () {
+      console.log('document 的点击事件')
+    }, false)
+
+    window.addEventListener('click', function () {
+      console.log('window 的点击事件')
+    }, false)
+
+  </script>
+</body>
+</html>

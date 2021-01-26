@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>X 轴坐标点: <span class="x">0</span></h1>
+  <h1>Y 轴坐标点: <span class="y">1</span></h1>
+
+  <script>
+    /*
+      实时显示光标坐标点
+        1. 获取元素
+          => span.x
+          => span.y
+        2. 绑定事件
+          => 绑定什么事件 ? mousemove
+            -> 只要移动就会触发
+          => 给谁绑定 ? document
+            -> 因为整个文档都要触发
+        3. 获取坐标点
+          => page 一套
+          => client 一套 ?
+            -> 如果没有滚动条无所谓
+            -> 一旦有了滚动条, 那么你拿到的都是相对于窗口
+          => offset 一套 ?
+            -> 因为你的页面里面一定有别的
+            -> 不合适
+    */
+
+    // 1. 获取元素
+    var spanX = document.querySelector('.x')
+    var spanY = document.querySelector('.y')
+
+    // 2. 绑定事件
+    document.addEventListener('mousemove', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 3. 获取坐标点
+      var x = e.pageX
+      var y = e.pageY
+
+      spanX.innerText = x
+      spanY.innerText = y
+    })
+  </script>
+</body>
+</html>

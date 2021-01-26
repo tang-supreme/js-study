@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <div></div>
+
+  <script>
+    /*
+      了解事件
+        + 我们提前和浏览器约定好一些行为
+        + 当用户在浏览器触发这些行为的时候, 有一个事件处理函数执行
+
+      事件三要素
+        1. 事件源: 在谁的身上绑定事件
+        2. 事件类型: 什么事件
+        3. 事件处理函数: 当行为发生的时候, 执行哪一个函数
+        + div.onclick = function () {}
+        + div: 事件源(绑定在 div 身上的事件)
+        + click: 事件类型
+        + function () {}: 事件处理函数, 当行为发生的时候, 执行这个函数
+
+      事件绑定分类
+        1. dom0级 事件
+          + on... 的形式
+        2. dom2级 事件
+          + 事件监听
+    */
+
+    // 0. 获取元素
+    var div = document.querySelector('div')
+
+    // 1. 绑定事件
+    div.onclick = function () {
+      console.log('我被点击了')
+    }
+  </script>
+</body>
+</html>

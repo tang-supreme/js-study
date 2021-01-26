@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">解绑事件</button>
+
+  <div id="box"></div>
+
+  <script>
+    /*
+      事件的解绑
+
+      复杂数据类型的比较
+        + 复杂数据类型在比较的时候, 时进行地址的比较
+        + 复杂数据类型的变量存储的就是一个在 堆 里面的地址
+
+      事件的解绑
+        1. 解绑 dom0级 事件
+          => 因为时赋值的行为
+          => 所以直接再次给他赋值为 null
+          => 就把之前的事件处理函数干掉了
+        2. 解绑 dom2级 事件
+          2-1. removeEventListener('事件类型', 要解绑的事件处理函数)
+            => 注意: 如果你想解绑事件, 那么在你绑定事件的时候, 一定要把函数单独书写
+                     写成一个具名函数的形式, 以函数名的形式绑定事件处理函数
+          2-2. detachEvent('on事件类型', 要解绑的事件处理函数)
+            => 注意: 如果你想解绑事件, 那么在你绑定事件的时候, 一定要把函数单独书写
+                     写成一个具名函数的形式, 以函数名的形式绑定事件处理函数
+    */
+
+    // 0. 复杂数据类型的比较
+    // var obj = { name: 'Jack' }
+    // var obj2 = { name: 'Jack' }
+    // 当 obj 存储的地址 和 obj2 存储的地址一模一样的时候才会得到 true
+    // console.log(obj == obj2)
+    // 把 obj 存储的地址赋值给了 obj3 一份
+    // var obj3 = obj
+    // console.log(obj3 == obj)
+
+    // 0. 获取元素
+    var btn = document.getElementById('btn')
+    var div = document.getElementById('box')
+
+    // 1. 绑定事件
+    // div.onclick = function () {
+    //   console.log('hello world')
+    // }
+    // btn.onclick = function () {
+    //   // 要给 div 解绑 dom0级 事件
+    //   div.onclick = null
+    // }
+
+    // 2. 绑定事件
+
+    // 不行
+    // 向一个事件类型身上绑定多个事件处理函数的时候
+    // click: [ 事件处理函数1, 事件处理函数2, 事件处理函数3, ... ]
+    // 当行为触发的时候, 找到对应的这个数组, 循环遍历, 依次执行
+    // 当你解绑的时候, 就会循环遍历, 依次去比较, 找到一个一样的, splice()
+    // div.addEventListener('click', function b() { console.log('hello world') })
+    // btn.onclick = function () {
+      // 给 div 解绑 dom2级 事件
+      // 在解绑的时候, 你传递进去了一个 叫做 a 的函数
+      // 就要找到 div 身上有没有绑定一个叫做 a 的函数, 发现没有, 解绑不掉
+      // div.removeEventListener('click', function a() { console.log('hello world') })
+      // console.log('执行完毕解绑代码')
+    // }
+
+    // 行
+    // 2-1. 提前准备好事件处理函数
+    // function clickHandler() {
+    //   console.log('hello world')
+    // }
+
+    // 2-2. 绑定事件
+    // clickHandler() 表示把函数执行掉
+    // clickHandler 表示一个函数的地址
+    // div.addEventListener('click', clickHandler)
+
+    // 2-3. 解绑事件
+    // btn.onclick = function () {
+    //   // 给 div 解绑 dom2级 事件
+    //   div.removeEventListener('click', clickHandler)
+    // }
+
+
+    // 2. IE 低版本
+    // function clickHandler() { console.log('hello world') }
+    // div.attachEvent('onclick', clickHandler)
+    // btn.onclick = function () {
+    //   // 解绑 div 的 dom2级 事件
+    //   div.detachEvent('onclick', clickHandler)
+    //   console.log('我执行了')
+    // }
+  </script>
+</body>
+</html>

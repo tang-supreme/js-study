@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 2000px;
+      height: 2000px;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin: 50px;
+      overflow: hidden;
+    }
+
+    p {
+      width: 50px;
+      height: 50px;
+      background-color: skyblue;
+      margin: 30px;
+      /* 在你计算坐标的时候, 不要考虑我 */
+      /* pointer-events: none; */
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <p></p>
+  </div>
+
+  <script>
+    /*
+      鼠标事件的事件对象信息
+        + 事件对象里面和鼠标事件相关的一些信息
+        1. 按下的按键
+          + 事件对象中有一个叫做 button 的属性
+          + 他来表示你按下的是哪一个按键
+            => 0 表示左键
+            => 1 表示滚轮键
+            => 2 表示右键
+        2. 光标的坐标(重点)
+          + 只要是鼠标事件, 任何鼠标事件都好使
+          2-1. clientX 和 clientY
+            => 光标距离可视窗口左上角的位置
+          2-2. pageX 和 pageY
+            => 光标距离文档流左上角的位置
+          2-3. offsetX 和 offsetY
+            => 光标距离元素左上角的位置
+            => 元素: 光标触发事件的元素(不是事件源)
+            => 扩展: 如果你不想按照里面光标触发元素的左上角计算坐标
+                     就像按照事件源来计算坐标
+                     css 样式 pointer-event: none;
+            => 纯靠 JS 完成
+              1. offsetParent 是谁
+                => 获取偏移量的时候的参考父元素
+                => 根据 body 来
+                => + offsetLeft - 父元素的 offsetLeft
+                => 根据 父元素
+                => + offsetLeft
+
+    */
+
+    // 0. 获取元素
+    var div = document.querySelector('div')
+    var p = document.querySelector('p')
+
+    // 1. 绑定鼠标按下事件
+    div.onmousedown = function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 2-1. clientX 和 clientY
+      console.log('clientX', e.clientX)
+      console.log('clientY', e.clientY)
+
+      console.log('=====================')
+
+      // 2-2. pageX 和 pageY
+      console.log('pageX', e.pageX)
+      console.log('pageY', e.pageY)
+
+      console.log('=====================')
+
+      // 2-3. offsetX 和 offsetY
+      console.log('offsetX', e.offsetX)
+      console.log('offsetY', e.offsetY)
+      // console.log(e.offsetX + p.offsetLeft - div.offsetLeft)
+      // console.log(e.offsetY + p.offsetTop - div.offsetTop)
+    }
+  </script>
+</body>
+</html>

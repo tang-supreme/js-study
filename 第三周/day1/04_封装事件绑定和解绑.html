@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">事件解绑</button>
+  <div id="box"></div>
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      封装事件绑定和解绑
+        + 为什么要封装 ?
+          => 因为有兼容问题
+          => 使用方便
+        + 封装需要几个参数 ?
+          => 三个
+          => 事件源, 事件类型, 事件处理函数
+
+      手动抛出异常
+        + 语法: throw new Error('错误信息')
+        + 用代码的方式在控制台报错
+        + 一旦代码执行, 会直接中断程序
+
+      开始封装
+        1. 参数验证
+          1-1. ele 必传, 如果没有传递, 直接报错
+          1-2. ele 需要是一个 元素节点
+            => 节点类型, nodeType: 1
+        2. 兼容处理
+          2-1. if () {} else {}
+    */
+
+    // function on(ele, type, handler) {
+    //   if (!ele) throw new Error('请按照规则传递参数')
+    //   if (ele.nodeType !== 1) throw new Error('事件源有问题')
+
+    //   // 2. 兼容处理
+    //   // div.addEventListener()
+    //   // div.attachEvent()
+    //   // 只要 元素 身上有这个函数, 就可以执行
+    //   // 没有这个函数就去换另一个函数试试
+    //   if (ele.addEventListener) {
+    //     ele.addEventListener(type, handler)
+    //   } else if (ele.attachEvent) {
+    //     ele.attachEvent('on' + type, handler)
+    //   } else {
+    //     // 对象操作语法 - 点语法
+    //     // ele.onclick = handler
+    //     // 对象操作语法 - 数组关联语法
+    //     // ele['onclick'] = handler
+    //     ele['on' + type] = handler
+    //   }
+    // }
+
+
+    // // 事件解绑封装
+    // function off(ele, type, handler) {
+    //   if (!ele) throw new Error('请按照规则传递参数')
+    //   if (ele.nodeType !== 1) throw new Error('事件源有问题')
+
+    //   // 处理解绑的兼容
+    //   if (ele.removeEventListener) {
+    //     ele.removeEventListener(type, handler)
+    //   } else if (ele.detachEvent) {
+    //     ele.detachEvent('on' + type, handler)
+    //   } else {
+    //     ele['on' + type] = null
+    //   }
+    // }
+
+
+    var div = document.getElementById('box')
+    var btn = document.getElementById('btn')
+
+
+    function clickHandler() { console.log('hello world') }
+    // 绑定事件
+    on(div, 'click', clickHandler)
+
+    // 解绑事件
+    on(btn, 'click', function () {
+      off(div, 'click', clickHandler)
+    })
+  </script>
+</body>
+</html>

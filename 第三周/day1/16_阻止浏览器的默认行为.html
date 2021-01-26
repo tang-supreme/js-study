@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <a href="https://www.baidu.com">点我一下试试</a>
+
+  <script>
+    /*
+      阻止浏览器默认行为
+        + 什么是浏览器默认行为
+          => 不需要我们手动绑定, 本身就带有的事件行为
+          => a 标签, 自带点击行为
+          => form 标签, 自带表单提交
+          => 框选, 自带框选效果
+          => 鼠标右键单击, 自动弹出一个菜单
+          => ...
+        + 阻止浏览器默认行为
+          => 在同类型事件里面进行阻止
+          => 你要阻止 a 的自动跳转, 那么你就在 a 标签的点击事件里面阻止
+          => 你要阻止 form 标签的表单提交, 那么就在 form 标签的 submit 事件里面阻止
+          => 1. e.preventDefault()
+            -> 标准浏览器使用
+          => 2. e.returnValue = false
+            -> IE 低版本使用
+          => 兼容
+            -> 方式1: if () {} else {}
+            -> 方式2: try {} catch (err) {}
+            -> 方式3: return false
+    */
+
+    // 获取元素
+    var a = document.getElementsByTagName('a')[0]
+
+    a.onclick = function (e) {
+      e = e || window.event
+      console.log('我被点击了')
+
+      // 阻止默认事件
+      // e.preventDefault()
+
+      // IE 低版本
+      // e.returnValue = false
+
+      return false
+    }
+
+    window.onselectstart = function () {
+      return false
+    }
+
+    // 右键单击事件
+    window.oncontextmenu = function () {
+      console.log('右键单击了')
+      // return false
+    }
+
+  </script>
+</body>
+</html>

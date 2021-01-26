@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 2000px;
+    }
+
+    div {
+      width: 200px;
+      height: 100px;
+      border: 2px solid #333;
+
+      margin: 100px;
+    }
+
+    p {
+      width: 200px;
+      height: 100px;
+      background-color: #fff;
+      border: 1px solid #333;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      display: none;
+    }
+
+    p.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    我是一个标题
+  </div>
+
+  <p>
+    我是提示文本我是提示文本我是提示文本我是提示文本我是提示文本我是提示文本我是提
+    示文本我是提示文本我是提示文本我是提示文本
+  </p>
+
+  <script>
+    /*
+      鼠标跟随
+
+      1. 获取元素
+        => div
+        => p
+      2. 绑定事件
+        => mouseover: 移入 p 显示
+        => mouseout: 移出 p 隐藏
+        => mousemove: 移动的时候, p 随时动
+      3. move 事件处理函数里面
+        => 获取坐标点
+        => page 一套 ?
+          -> 页面只有一屏是没问题
+        => offset 一套 ?
+          -> 因为根据元素计算坐标
+          -> 除非你的提示框和标题是父子关系, 并且是根据标题来定位
+        => client 一套 ?
+          -> 因为我的盒子就是根据窗口第一屏定位
+      4. 解决闪烁问题
+        => 为什么 ?
+          -> 当提示盒子显示的时候, 光标相当于移出了 div
+          -> 就要让 p 消失
+          -> 消失的一瞬间, 我的 div 有被触发了移入
+          -> 就要让 p 显示
+        => 怎么解决 ?
+          -> 让 p 和光标离开一些距离
+    */
+
+    // 1. 获取元素
+    var div = document.querySelector('div')
+    var p = document.querySelector('p')
+
+    // 2. 绑定事件
+    div.addEventListener('mouseover', function () {
+      // p 显示
+      p.classList.add('active')
+    })
+
+    div.addEventListener('mouseout', function () {
+      // p 隐藏
+      p.classList.remove('active')
+    })
+
+    div.addEventListener('mousemove', function (e) {
+      // 处理事件对象兼容
+      e = e || window.event
+
+      // 3. 获取坐标点
+      var x = e.clientX + 5
+      var y = e.clientY + 5
+
+      // 给 p 的 left 和 top 赋值
+      p.style.left = x + 'px'
+      p.style.top = y + 'px'
+    })
+  </script>
+</body>
+</html>
