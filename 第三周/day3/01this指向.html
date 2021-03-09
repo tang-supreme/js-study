@@ -4,8 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
 </head>
 <body>
-  
+  <div></div>
+
+  <script>
+    /*
+      this 指向
+        + 定义 ：
+        =>this 是一个作用域的关键字，全局很少用，大部分在函数内部使用
+        
+      指向：
+      => 全局使用：window
+      => 函数使用： 不管函数怎么定义，不管函数在哪定义，只看函数在那调用（箭头函数除外）
+      1.普通调用（直接调用/全局调用）
+        函数名（）：this =》window
+      2.对象调用
+        xxx。函数名（）：this =》 点前面是谁就是谁
+      3/定时器处理函数
+        setTimeout(function(){},0):this ->window
+        setInterval(function(){},0):this ->window
+      4.事件处理函数
+        xxx.onclick = function(){}  this事件源（绑定在谁身上的事件） 
+        xxx.addEventListener('',function(){})  this:事件源
+      5.自执行函数
+        (function(){})  ():this -> window
+    */
+
+    function fn() {
+      console.log(this)
+    }
+    // fn()  //window
+
+    var obj = {
+      // 把fn存储的地址赋给了obj的f成员，从现在开始obj.f和全局变量fn指向同一函数空间
+      f:fn,
+      name : '我是obj对象'
+    }
+    // obj.f()  //对象调用 this -> obj
+
+    // 把函数当作定时器处理函数使用
+    // setTimeout(fn,0)  
+    // setInterval(obj.f,0);
+
+    var div = document.querySelector('div')
+    // div.onclick = obj.f  //事件处理函数 this ->事件源
+    div.addEventListener('click',obj.f)  //事件处理函数this -> 事件源
+
+    // 把obj里面的fn成员存储的函数地址赋值给了全局变量f
+    // 把全局变量f和obj.fn 指向同一个函数空间
+    var f = obj.fn
+    fn()   //this -> window
+  </script>
 </body>
 </html>

@@ -6,6 +6,92 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+  <div></div>
+
+  <script>
+    /*
+      改变 this 指向
+        this 有他本身的指向性
+        不管你本身指向哪里，我让你指向谁，你就指向谁
+        三个方法
+          1.call()
+          2.apply()
+          3.bind()
+
+      1.call()
+        使用方法，直接连接在函数名后面使用
+        语法：
+          fn.call()
+          obj.fn.call()
+        参数：
+          第一个参数，就是函数内部的this指向
+          第二个参数开始，依次给函数传递参数
+        特点：
+          会立即执行函数（不适合用作定时器处理函数或者事件处理函数）
+        作用：
+          伪数组借用数组方法
+
+      2.apply()
+        使用方法，直接连接在函数名后面使用
+        语法：
+          fn.apply()
+          obj.fn.apply()
+        参数：
+          第一个参数，就是函数内部的this指向
+          第二个参数，是一个数组或者伪数组都行，里面的每一项依次给函数传递参数
+        特点：
+          会立即执行函数
+        作用：
+          可以数组的形式给某些功能函数传参
+          math.max()
+
+      3.bind()
+        使用方法，就是直接加在函数名后面使用
+        语法：
+          fn.apply()
+          obj.fn.apply()
+        参数：
+          第一个参数，就是函数内部的this 指向
+          第二个参数开始，依次给函数传递参数
+        特点：
+          不会立即调用函数
+          会返回一个新的函数，一个已经被改变好的this指向函数
+        作用：
+          改变事件处理函数或者定时器处理函数的this指向
+    */  
+
+    function fn(a,b){
+      console.group('fn函数')
+      console.log(this)
+      console.log(a)
+      console.log(b)
+      console.groupEnd()
+    }
+    var obj = {
+      name : '我是obj对象'
+    }
+    fn(10,20)  //this ->window
+
+    // 1.call()
+    // 使用call方法去调用fn函数，把函数内部的this指向变成obj
+    fn.call(obj,100,200)
+
+    // 2.apply()
+    // 使用call方法去调用fn函数，把函数内部的this指向改变成obj
+    fn.apply(obj,[1000,'world'])
+
+    // 3.bind()
+    // 使用bind方法改变fn函数的this指向
+    // res是一个fn函数的克隆版，只不过里面的this被锁死了，指向obj
+    var res = fn.bind(obj,'hello','world')
+    res()
+  </script>
 </body>
 </html>
