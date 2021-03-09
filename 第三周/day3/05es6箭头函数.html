@@ -6,6 +6,35 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      es6的箭头函数
+        一种新的函数定义方式
+        对于函数表达式的简写方式（匿名函数）
+        （匿名函数）
+        var fn = function(){}
+        var obj = {fn:function(){}}
+        setTimeout(function(){},0)
+        setInterval(function(){},0)
+        [].forEach(function(){})
+        div.onclick=function(){}
+        div.addEventListener('click',function(){})
+
+      语法：()=>{}
+      ():形参的位置
+      =>:箭头函数的标志
+      {}:代码段
+    */
+
+    var fn =function(){console.log('我是一个函数')}
+    fn()
+
+    var fun = (a,b)=>{
+      console.log('我是一个fun函数')
+      console.log(a)
+      console.log(b)
+    }
+    fun(100,200)
+  </script>
 </body>
 </html>

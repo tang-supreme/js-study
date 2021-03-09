@@ -6,6 +6,35 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      对象的简写：
+        在es6标准下，有一个对象的简写方式
+        1.当key和value一模一样的时候，可以只写一个
+        2.当某一个key值是一个个函数的时候，并且不受箭头函数
+        =》可以直接省略function关键字和冒号不写
+    */
+
+    // 1.
+    let age = 18
+    let obj = {
+      name:'jack',
+      age, //等价于 age:age
+      gender:'男' //不能省略
+    }
+    console.log(obj)
+
+    // 2.函数省略
+    // f1和f3是一回事
+    let obj = {
+      name:'我是obj对象',
+      f1:function(){console.log(this)},
+      f2:()=>{console.log(this)},
+      f3(){console.log(this)}
+    }
+    obj.f1() 
+    obj.f2()
+    obj.f3()
+  </script>
 </body>
 </html>

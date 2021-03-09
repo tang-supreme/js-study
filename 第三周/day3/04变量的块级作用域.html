@@ -1,11 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .box {
+      width: 600px;
+      height: 300px;
+      border: 10px solid #333;
+      margin: 30px auto;
+    }
+
+    .box>ul {
+      width: 100%;
+      height: 60px;
+      overflow: hidden;
+    }
+
+    .box>ul>li {
+      width: 200px;
+      height: 100%;
+      background: orange;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      float: left;
+    }
+
+    .box>ul>li.active {
+      background-color: skyblue;
+    }
+
+    .box>ol {
+      width: 100%;
+      height: 240px;
+      position: relative;
+    }
+
+    .box>ol>li {
+      width: 100%;
+      height: 100%;
+      background-color: purple;
+      color: #fff;
+      line-height: 240px;
+      text-align: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: none;
+    }
+
+    .box>ol>li.active {
+      display: block;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <div class="box">
+    <ul>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ol>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ol>
+  </div>
+
+  <script>
+    const btns = document.querySelectorAll('ul>li')
+    const tabs = document.querySelectorAll('ol>li')
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('index', i)
+      btns[i].onclick = function () {
+        for(var i = 0 ;i<btns.length;i++){
+          btns[i].className = tabs[i].className = ''
+        }
+        console.log(this)
+        this.className = 'active'
+        tabs[this.getAttribute('index')-0].className = 'active'
+      }
+    }
+    /*
+      变量的块级作用域
+        let 和 const 定义的变量每一个可以书写代码段的{}都会限制使用范围
+        特点：我们可以把循环过程中的每一次的变量限制在每一次的{}里面
+    */
+  </script>
 </body>
+
 </html>
