@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      top: 110px;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <p></p>
+
+  <script>
+    /*
+      发现问题
+        只能运动一个属性
+      
+      解决问题
+        以对象的形式把你要运动的属性传递进去
+          {left:200 , top:300}
+        我的函数其实只接受两个参数就够了
+          元素
+          目标对象
+
+        发现问题:
+
+    */
+    var div = document.querySelector('div')
+    div.addEventListener('click', function () {
+      move(div, { left: 1000, top: 500 })
+    })
+
+    // 准备运动函数
+    function move(ele,target){
+      // targer右多少属性开启多少定时器
+      for(let key in target){
+        let distance = 0
+        let timer = setInterval(()=>{
+          distance += 10
+          ele.style[key] = distance + 'px'
+          if(distance>=target[key]){
+            clearInterval(timer)
+          }
+        },30)
+      }
+    }
+  </script>
+</body>
+
+</html>

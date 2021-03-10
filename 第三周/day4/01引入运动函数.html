@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    div{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: blue;
+      top: 0;
+      left: 0;
+    }
+
+    p{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: pink ;
+      top: 110px;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <p></p>
+
+  <script>
+    /*
+      引入运动函数
+        就是把运动的这一段过程抽离出来，封装成一个函数
+
+      需求1：实现点击div移动到200px的位置
+        需要运动
+        需要一个setInterval()
+
+      需求2：实现点击p移动到300px的位置
+    */
+
+    var div = document.querySelector('div')
+    div.addEventListener('click',function(){
+      let distance = 0
+      let timer = setInterval(function(){
+        distance += 10
+        div.style.left =distance+'px' 
+        if(distance>=1000){
+          clearInterval(timer)
+        }
+      },30)
+    })
+
+    var p = document.querySelector('p')
+    p.addEventListener('click',function(){
+      let distance = 0
+      let timer = setInterval(function(){
+        distance+=10
+        p.style.left = distance+'px'
+        if(distance>=500){
+          clearInterval(timer)
+        }
+      },30)
+    })
+  </script>
+</body>
+</html>
