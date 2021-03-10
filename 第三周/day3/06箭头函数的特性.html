@@ -6,6 +6,109 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      箭头函数的特征
+        1.箭头函数如果只要一个形参
+          那么可以省略小括号不写
+          (a)=>{}
+          a =>{}
+
+        2.箭头函数代码段里面只要一句话，可以省略大括号不写
+          并且会自动return这一句话的结果
+          ()=>{return 123}
+          ()=>123
+
+        3.箭头函数里面没有arguments这个东西
+         ==》压根没有，你用不了
+
+        4.箭头函数里面没有this关键字
+          官方：箭头函数里面的this是上下文，外部作用域的this就是箭头函数内的this
+          私人：箭头函数的this是，你的箭头函数写在哪一行，上一行的this就是箭头函数里面的this
+
+        5.箭头函数里面的this任何方法改变不了
+          因为箭头函数没有this
+          call/apply/bind不能改变箭头函数的this指向
+    */
+
+
+    //  1. 一个形参可以省略小括号不写
+    let fn = (a) => { console.log(a) }
+    let fun = a => { console.log(a) }
+    fn(100)
+    fun(200)
+
+    // 2. 一句话可以省略大括号不写, 并且自动 return
+    let fn = (a, b) => { return a + b }
+    console.log(fn(10, 20))
+    // 把 a + b 的结果当作 fun 的返回值
+    var fun = (a, b) => a + b
+    console.log(fun(100, 200))
+
+    let arr = [10, 20, 30, 40, 50]
+    let res = arr.every(function (item) { return item >= 10 })
+    let res2 = arr.every(item => { return item >= 10 })
+    let res3 = arr.every(item => item >= 10)
+    console.log(res, res2, res3)
+
+    // 3. 箭头函数里面没有 arguments
+    let fn = () => { console.log(arguments) }
+    let fun = function () { console.log(arguments) }
+    fun(100, 200, 300)
+    fn(10, 20, 30)
+
+
+    // 4. 箭头函数里面没有 this
+
+    let div = document.querySelector('div')
+    div.onclick = function () {
+      console.log(this)
+    }
+
+    div.onclick = () => {
+      console.log(this) // window
+    }
+
+    div.onclick = function () {
+      let fn = function () {
+        console.log(this)
+      }
+      fn() // window
+
+      let fun = () => { // 就是 84 行的 this
+        console.log(this)
+      }
+      fun() // div
+    }
+
+    let obj = {
+      name: '我是 obj 对象',
+      fn: function () { console.log(this) },
+      fun: () => { console.log(this) }
+    }
+
+    obj.fn() // obj
+    obj.fun() // window
+
+    let div = document.querySelector('div')
+    div.onclick = function () {
+      // this
+      let obj = {
+        name: '我是 obj 对象',
+        fn: function () { console.log(this) },
+        fun: () => { console.log(this) }
+      }
+
+      obj.fn() // obj
+      obj.fun() // div
+    }
+
+
+    // 5. 箭头函数改变不了 this 指向
+    let fn = () => { console.log(this) }
+    fn() // window
+    let obj = { name: 'Jack' }
+    fn.call(obj)
+  </script>
 </body>
 </html>
