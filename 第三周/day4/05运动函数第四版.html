@@ -1,11 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 0px;
+      top: 102px;
+
+      opacity: 0.2;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      top: 110px;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <div></div>
+  <!-- <p></p> -->
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      发现问题
+        + 我不一定从 整5倍数开始 101
+        + 我的目标位置也可以时一个零散的数
+        + 我不一定非得想正方向
+        + 运动不了 opacity
+
+      解决问题
+        + 拿到的时候放大一百倍
+        + 最后设置的时候再缩小一百倍
+
+      发现问题
+        + opacity 只能从 1 到 0
+    */
+
+    var div = document.querySelector('div')
+    div.addEventListener('click', function () {
+      // move(div, { left: 112, top: 89 })
+      move(div, { opacity: 1 })
+    })
+
+
+    function move(ele, target) {
+      for (let key in target) {
+        let timer = setInterval(() => {
+          // 获取当前样式的时候，分成两种
+          // 一种是带有px的，
+          // 一种是opacity放大一百倍
+          let current = key === 'opacity' ? getStyle(ele, 'opacity') * 100 : parseInt(getStyle(ele, key))
+          let distance = (target[key] - current) / 10
+          distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+          console.log(current, distance)
+          if (current === target[key]) {
+            clearInterval(timer)
+          } else {
+            ele.style[key] = key === 'opacity' ? (current + distance) / 100 : current + distance + 'px'
+          }
+        }, 30)
+      }
+    }
+  </script>
 </body>
+
 </html>
