@@ -4,8 +4,320 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol, li {
+      list-style: none;
+    }
+
+    .banner {
+      width: 600px;
+      height: 400px;
+      border: 10px solid #333;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .banner > ul {
+      width: 500%;
+      overflow: hidden;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .banner > ul > li {
+      width: 600px;
+      height: 100%;
+      float: left;
+      font-size: 100px;
+      color: #fff;
+      line-height: 400px;
+      text-align: center;
+    }
+
+    .banner > ol {
+      width: 175px;
+      height: 25px;
+      background-color: rgba(0, 0, 0, .5);
+      border-radius: 15px;
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      margin-left: -93px;
+      padding-top: 5px;
+      padding-right: 15px;
+    }
+
+    .banner > ol > li {
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+      float: left;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .banner > ol > li.active {
+      background-color: orange;
+    }
+
+    .banner > div {
+      width: 100%;
+      height: 60px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -30px;
+    }
+
+    .banner > div > p {
+      float: left;
+      width: 40px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      line-height: 60px;
+      text-align: center;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .banner > div > p:last-child {
+      float: right;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="banner">
+    <ul class="img_box">
+      <li style="background-color: pink;">1</li>
+      <li style="background-color: orange;">2</li>
+      <li style="background-color: lightgreen;">3</li>
+      <li style="background-color: skyblue;">4</li>
+      <li style="background-color: purple;">5</li>
+    </ul>
+    <!-- 焦点盒子 -->
+    <ol>
+      
+    </ol>
+    <!-- 左右切换盒子 -->
+    <div>
+      <p class="left"><</p>
+      <p class="right">></p>
+    </div>
+  </div>
+  <script src="../utils.js"></script>
+  <script>
+    /*
+      左右切换轮播图
+
+      1. 布局
+        => 可视区域盒子
+        => ul > li, 每一个 li 就是一个图片, ul 给一个定位
+
+      2. 生成焦点
+        => 根据图片盒子的子元素的数量生成焦点
+        => 调整一下 pointBox 的宽度
+          -> 根据焦点的数量决定宽度
+          -> 一个焦点是 width 20, padding-left 15
+          -> 一个焦点 35, 数量 * 35
+        => 调整一下 pointBox 的位置
+          -> margin-left
+          -> 整个 pointBox 的一半
+
+      3.赋值元素
+        把本身的第一张赋值一份，本身的最后一仗也复制一份
+        第一张发在最后，最后一张放在最前面
+        imgbox宽度不够
+          根据最新的子元素数量设置宽度
+        从新设置imgbox的位置
+          left赋值为一个可视化宽度
+
+      4.自动轮播
+        每间隔一段时间，运动一段距离
+        每间隔一段时间，setInterval()
+        运动一段距离：move()
+        运动多少距离
+          一次是一个可视区域的宽度
+          准备一个变量用来记录当前的是第几张图片index
+          定时器里面每次index++
+          目标位置 -index * 可视区域宽度
+
+      5.运动结束
+        判断你到了最后一个li，假的第一张的时候
+          不需要运动，瞬间定位回真的第一张
+          假的第一张实际上就是最后一个li
+          最后一个li的索引就是length-1
+        改变焦点位置
+          所有的焦点都没有active类名
+          只给当前索引配套的焦点加上active类名
+          焦点和谁配套
+          index === 1 的时候显示的第一张第0个焦点
+          index === 2 的时候显示的第二张第1个焦点
+          index === 3 的时候显示的第三张第2个焦点
+
+      6.移入移出事件
+          移入banner区域的时候，停止定时器
+            要么是要点击左右切换
+            要么是要点击焦点切换
+            要么你是想观察这个图片
+          移除banner区域的时候再次自动轮播
+
+      7.点击事件
+          焦点，左右切换
+          焦点是渲染的
+          事件委托，banner
+          右按钮切换下一张
+            index++
+            调用move函数切换到下一张
+          左按钮切换上一张
+            index--
+            到了第0张的时候，会出现问题
+            因为我们的运动结束，只判断了 最后一张的时候瞬间定位到第一张
+            还需要判断当第0张的时候，瞬间定位到倒数第二张
+    */
+
+    // 获取元素
+    // 获取承载图片的盒子
+      const imgBox = document.querySelector('.banner>ul')
+      // 获取承载焦点的盒子
+      const pointBox = document.querySelector('.banner>ol')
+      // 获取可视区域的壳子
+      const banner = document.querySelector('.banner')
+
+      // 1.准备变量
+      // 1-1 准备一个可视区域的宽度
+      const banner_width = banner.clientWidth
+      // 1-2 准备一个变量记录定时器返回值
+      let timer = 0
+      // 1-2 准备一个变量记录第几张
+      let index = 1
+
+      // 2.生成焦点
+      setPoint()
+      function setPoint(){
+        // 2.1获取要生成多少个焦点
+        let num = imgBox.children.length
+
+        // 2.2生成若干个li放在ol里面
+        const frg = document.createDocumentFragment()
+        for(let i = 0;i<num;i++){
+          const li = document.createElement('li')
+          li.setAttribute('type','point')
+          li.setAttribute('point_index',i+1)
+          // 2.3 有一个默认是右active类名
+          if(i===0) li.classList.add('active')
+          // 添加到文档碎片里面
+          frg.appendChild(li)
+        }
+        // 2-4把文档碎片里面的内容添加到imgBox
+        pointBox.appendChild(frg)
+
+        // 2-5从新调整pointBox的宽度
+        pointBox.style.width = num * 35 +'px'
+
+        // 2-6从新调整pointBox的位置
+        pointBox.style.marginLeft = -pointBox.offsetWidth / 2 + 'px'
+      }
+
+        // 3.复制元素
+        copyEle()
+        function copyEle(){
+          // 3.1克隆节点
+          const first = imgBox.firstElementChild.cloneNode(true)
+          const last = imgBox.lastElementChild.cloneNode(true)
+
+          // 3.2插入节点
+          imgBox.appendChild(first)
+          // 最后一张插入本来的第一张前面
+          imgBox.insertBefore(last,imgBox.firstChild)
+          // 3-3根据最新的子元素数量来设置imgbox的宽度
+          imgBox.style.width = imgBox.children.length*100+'%'
+          // 3-4设置imgbox的定位关系
+          imgBox.style.left =  -banner_width +'px'
+        }
+
+        //4.自动轮播 
+        autoPlay()
+        function autoPlay(){
+          timer = setInterval(()=>{
+            index++
+            console.log('显示第'+index+'张')
+            // 4-1 通过move函数让元素东起来imgbox
+            move(imgBox,{left:-index*banner_width},moveEnd)
+          },1000)
+        }
+
+        // 5运动结束
+        function moveEnd(){
+          // 判断到最后一张的时候，瞬间定位到第一张
+          if(index === imgBox.children.length-1){
+            index = 1
+            // 瞬间定位直接赋值
+            imgBox.style.left = -index*banner_width +'px'
+          }
+          
+          if(index === 0){
+            index = imgBox.children.length - 2
+            imgBox.style.left = -index*banner_width+'px'
+          }
+
+          // 焦点配套
+          for(let i = 0;i<pointBox.children.length;i++){
+            pointBox.children[i].className=''
+          }
+          pointBox.children[index-1].className='active'
+        }
+
+        // 6.移入移出
+        overOut()
+        function overOut(){
+          // 移入的时候停止定时器，不在自动轮播了
+          banner.addEventListener('mouseover',()=>clearInterval(timer))
+          // 移出的时候再次开启自动轮播
+          banner.addEventListener('mouseout',()=>autoPlay())
+        }
+        
+        // 7.绑定事件
+        bindEvent()
+        function bindEvent(){
+          // 事件委托的形式给banner绑定一个点击事件
+          banner.addEventListener('click',e=>{
+            e = e || window.event
+            const target = e.target || e.srcElement
+
+            // 7.1判断点击的是右按钮
+            if(target.className === 'right'){
+              // 切换下一张
+              index++
+              // 调用move函数
+              move(imgBox,{left:-index*banner_width},moveEnd)
+            }
+
+            // 7.2判断点击的是左按钮
+            if(target.className === 'left'){
+              // 切换上一张
+              index--
+              // 调用move函数
+              move(imgBox,{left:-index*banner_width},moveEnd)
+            }
+
+            // 7.3判断点击的是焦点按钮
+            if(target.getAttribute('type') === 'point'){
+              // 拿到元素身上记录的索引
+              index = target.getAttribute('point_index')-0
+              // 调用move函数
+              move(imgBox,{left:-index*banner_width},moveEnd)
+            }
+          })
+        }
+  </script>
 </body>
 </html>
