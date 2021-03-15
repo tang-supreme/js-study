@@ -4,8 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./swiper/css/swiper.min.css">
+
+  <style>
+    .swiper-container {
+      width: 600px;
+      height: 400px;
+      border: 10px solid #333;
+      margin: 100px auto;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div style="background-color: red;" class="swiper-slide">Slide 1</div>
+        <div style="background-color: pink;" class="swiper-slide">Slide 2</div>
+        <div style="background-color: skyblue;" class="swiper-slide">Slide 3</div>
+    </div>
+
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <script src="./swiper/js/swiper.min.js"></script>
+
+  <script>
+    var mySwiper = new Swiper('.swiper-container',{
+      direction: 'vertical', // 垂直切换选项
+      loop: true, // 循环模式选项
+      // 初始化显示索引为 几 的那一张
+      initialSlide: 1,
+      effect: 'cube',
+
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    })
+  </script>
 </body>
 </html>
