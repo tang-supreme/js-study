@@ -6,6 +6,48 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /*
+      es6 定义变量
+        let : 变量
+        const : 常量
+
+      let/const 一起和var的区别
+        1.var会进行与解析
+          ==》let/const不会进行与解析，必须先定义后使用
+        2.var可以声明重复变量名
+          ==》let/const不能生命重复变量名
+        3.var没有块级作用域
+          ==》let/const有块级作用域
+
+      let 和const 的区别
+        1.let 叫做变量，const叫做常量
+        2.let 可以声明不赋值，const必须进行赋值
+        3.let 生命的变量可以修改，const声明的常量不能修改，一旦修改就报错
+
+      变量的定义规范
+        1.尽量使用let 和const定义
+        2.书写代码的时候尽可能优先使用const
+
+      块级作用域
+        被代码快限制变量的使用方法
+        var：只有函数私有作用域才能限制使用范围
+        let/const : 只要是能书写代码段的{}都能限制使用范围
+    */
+
+    if(true){
+      // 全局变量
+      var num = 100
+    }
+    console.log(num)
+
+    // let定义的num离开这个if的{}就用不了了
+    // if(true){
+    //   let num = 200
+    //   console.log(num)
+    // }
+    // let num = 300
+    // console.log(num)
+  </script>
 </body>
 </html>

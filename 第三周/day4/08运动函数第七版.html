@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 0px;
+      top: 102px;
+
+      opacity: 1;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      top: 110px;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <div></div>
+  <p></p>
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      发现问题
+        没办法再运动结束干点啥
+        需求：运动结束以后，背景颜色变成蓝色
+        需求：运动结束以后，把display变成none
+
+      解决问题：
+        目的：运动结束以后做点事情
+        思路：
+          1.把我想做的事情放在一个盒子里面(函数：就是一个盒子，承载一段代码，在你需要的时候调用)
+          2.把我这个盒子传递给move函数
+          3.在运动结束的时候，你帮我把盒子里面的代码执行一下
+          方法：
+            第三个参数传递一个函数，把我想要再运动结束做的事情传递进去
+    */
+
+    var div = document.querySelector('div')
+    div.addEventListener('click', function () {
+      // move(div, { left: 112, top: 89 })
+      move(div, { opacity: 0.5, left: 200, top: 300  },end)
+
+      // 我要在运动结束做的事情
+      function end(){
+        div.style.backgroundColor = 'purple'
+      }
+    })
+
+    var p = document.querySelector('p')
+    p.addEventListener('click', function () {
+      // 结束的时候背景颜色变成绿色
+      move(p, { width: 200, height: 200 },end2)
+      function end2(){
+        p.style.display='none'
+      }
+    })
+
+
+    function move(ele, target,fn = ()=>{}) {    //参数默认值，fn接收的就是你传递进来的那个函数
+      // 准备一个计数器
+      let count = 0
+
+      for (let key in target) {
+        // 开启定时器之前，就做好判断
+        if(key === 'opacity')target[key]*=100
+        // 没开启一个定时器++
+        count++
+
+        let timer = setInterval(() => {
+          let current = key === 'opacity' ? getStyle(ele, 'opacity') * 100 : parseInt(getStyle(ele, key))
+          let distance = (target[key] - current) / 10
+          distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+          console.log(current, distance)
+          if (current === target[key]) {
+            clearInterval(timer)
+            // 没结束一个属性，关闭一个定时器，计数器--
+            count--
+            // 当count === 0 的时候，表示所有的属性都运动结束了
+            if(!count){
+              // 把你传递进来的函数执行一下
+              fn()
+            }
+            console.log('运动结束')
+          } else {
+            ele.style[key] = key === 'opacity' ? (current + distance) / 100 : current + distance + 'px'
+          }
+        }, 30)
+      }
+    }
+  </script>
 </body>
+
 </html>
