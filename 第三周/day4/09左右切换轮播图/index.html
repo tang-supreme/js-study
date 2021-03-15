@@ -20,6 +20,7 @@
       border: 10px solid #333;
       margin: 100px auto;
       position: relative;
+      overflow: hidden;
     }
 
     .banner > ul {
@@ -365,9 +366,13 @@
           document.addEventListener('visibilitychange',()=>{
             console.log('切换了')
             console.log(document.visibilityState)
+            // document身上有一个属性叫做visibilityState
+            // 表示当前页面的显示还是隐藏状态
             if(document.visibilityState === 'hidden'){
+              // 关闭定时器
               clearInterval(timer)
             }else if(document.visibilityState === 'visible'){
+              // 再次开启自动轮播
               autoPlay()
             }
           })

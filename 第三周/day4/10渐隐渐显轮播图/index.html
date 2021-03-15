@@ -4,8 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,ol,li{
+      list-style: none;
+    }
+
+    .banner{
+      width: 600px;
+      height: 400px;
+      border: 10px solid #333;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .banner > ul{
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .banner > ul >li{
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 400px;
+      font-size: 100px;
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: opacity .5s linear;
+    }
+
+    /* 
+      方式一：使用运动函数move
+      方式二：使用transtion属性
+     */
+
+     .banner > ul >li.active{
+       opacity: 1;
+     }
+
+     .banner >ol{
+       width: 175px;
+       height: 25px;
+       padding-top: 5px;
+       padding-right: 15px;
+       position: absolute;
+       left: 50%;
+       bottom: 30px;
+       margin-left: -93px;
+       background-color: rgba(0,0,0,.5);
+       border-radius: 15px;
+     }
+
+     .banner > ol > li{
+       width: 20px;
+       height: 20px;
+       float: left;
+       background-color: #fff;
+       border-radius: 50px;
+       margin-left: 15px;
+       cursor: pointer;
+     }
+
+     .banner > ol > li.active{
+       background-color: purple;
+     }
+
+     .banner > div{
+       width: 100%;
+       height: 60px;
+       position: absolute;
+       left: 0;
+       top: 50%;
+       margin-top: -30px;
+     }
+
+     .banner > div >p{
+       float: left;
+       width: 40px;
+       height: 100%;
+       text-align: center;
+       line-height: 60px;
+       color: white;
+       background-color: rgba(0,0,0,.5);
+       cursor: pointer;
+     }
+
+     .banner > div > p.right{
+       float: right;
+     }
+  </style>
 </head>
 <body>
-  
+
+  <div class="banner">
+    <ul class="imgBox">
+      <li class="active" style="background-color: red;" >1</li>
+      <li style="background-color: pink;" >2</li>
+      <li style="background-color: skyblue;" >3</li>
+      <li style="background-color: orange;" >4</li>
+      <li style="background-color: yellow;" >5</li>
+    </ul>
+    <ol></ol>
+    <div>
+      <p class="left"><</p>
+      <p class="right">></p>
+    </div>
+  </div>
+
+  <script>
+    const imgBox = document.querySelector('.banner > ul')
+    const pointBox = document.querySelector('.banner >ol')
+    const banner = document.querySelector('.banner') 
+    let index = 0
+    let timer = 0
+
+    setPoint()
+    function setPoint(){
+      const num = imgBox.children.length
+      const frg = document.createDocumentFragment()
+      for(let i = 0; i<num;i++){
+        const li = document.createElement('li')
+        li.classList.add('point')
+        li.dataset.point = i
+        if(i === 0) li.classList.add('active')
+        frg.appendChild(li)
+      }
+      pointBox.appendChild(frg)
+      pointBox.style.width = num *35 +'px'
+      pointBox.style.marginLeft = -pointBox.offsetWidth / 2 + 'px'
+    }
+
+    function changeOne(type){
+      imgBox.children[index].classList.remove('active')
+      pointBox.children[index].classList.remove('active')
+      console.log('111')
+      if(type === true){
+        index++
+      }else if(type === false){
+        index--
+      }else{
+        index = type
+      }
+      if(index>=imgBox.children.length){
+        index = 0
+      }
+      if(index<0){
+        index = imgBox.children.length-1
+      }
+      imgBox.children[index].classList.add('active')
+      pointBox.children[index].classList.add('active')
+
+    }
+
+    autoPlay()
+    function autoPlay(){
+      timer = setInterval(()=>{
+        changeOne(true)
+      },2000)
+    }
+
+    overOut()
+    function overOut(){
+      banner.addEventListener('mouseover',()=>clearInterval(timer))
+      banner.addEventListener('mouseout',()=>autoPlay())
+    }
+
+    bindEvent()
+    function bindEvent(){
+      banner.addEventListener('click',e=>{
+        e = e || window.event
+        const target = e.target || e.srcElement
+        if(target.className === 'left'){
+          changeOne(false)
+        }
+        if(target.className === 'right'){
+          changeOne(true)
+        }
+        if(target.className === 'point'){
+          const pointIndex = target.dataset.point-0
+          changeOne(pointIndex)
+        }
+      })
+    }
+
+    changeTab()
+    function changeTab(){
+      document.addEventListener('visibilitychange',()=>{
+        if(document.visibilityState === 'hidden'){
+          clearInterval(timer)
+        }else if(document.visibilityState === 'visible'){
+          autoPlay()
+        }
+      })
+    }
+  </script>
 </body>
 </html>
