@@ -4,8 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 0px;
+      top: 102px;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      top: 110px;
+    }
+  </style>
 </head>
 <body>
-  
+  <div></div>
+  <!-- <p></p> -->
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      发现问题
+        1.当多个属性的目标值不一样的时候，不能走出对角线
+        2.当不从0开始的时候，运动会先回到0的位置
+
+      解决问题
+        2.拿到元素的初始位置
+          吧distance默认设置为元素初始位置就可以了
+        1.改变速度
+          每39ms移动一次
+          每次移动都移动剩余距离的十分之一
+
+      发现问题
+
+        
+    */
+   var div = document.querySelector('div')
+   div.addEventListener('click',function(){
+    //  move(div, { left: 502, top: 301 })
+     move(div,{opacity:0})
+   })
+
+
+  //  准备运动函数
+  // function move(ele,target){
+  //   for(let key in target){
+  //     // 解决问题2：设置为元素初始位置
+  //     // 获取元素非行内央视
+  //     let distance = parseInt(getStyle(ele,key))
+  //     let timer = setInterval(()=>{
+  //       distance+=10
+  //       ele.style[key] = distance +'px'
+  //       if(distance>=target[key]){
+  //         clearInterval(timer)
+  //       }
+  //     },30)
+  //   }
+  // }
+
+  // 解决问题1：
+  // 通过改变速度的方式来解决
+  function move(ele,target){
+    for(let key in target){
+      let timer =setInterval(()=>{
+        let current = parseInt(getStyle(ele,key))
+
+        // 计算本次要移动的距离
+        let distance = (target[key]-current) / 10
+        // 取整
+        // 当distance是正数的时候 向上取整
+        // 当distance是负数的时候，向下取整
+        distance = distance>0?Math.ceil(distance):Math.floor(distance)
+        console.log(current,distance)
+
+        // 判断是否到达目标位置
+        if(current === target[key]){
+          // 到位了
+          clearInterval(timer)
+        }else{
+          // 没到位
+          // 当前位置+要移动的距离
+          ele.style[key] = current + distance +'px'
+        }
+      },30)
+    }
+  }
+
+  /*
+    0ms
+      0
+    30ms
+      当前位置是0
+      目标位置是200
+      计算移动的距离(200-0)*0.1 === 20
+      让元素去到20的位置
+    60ms
+      当前位置是20
+      目标位置是200
+      计算移动的距离(200-20)*0.1 ===18
+      让元素去到20+18的位置
+  */
+  </script>
 </body>
 </html>
